@@ -9,11 +9,23 @@
 /* Begin PBXBuildFile section */
 		03752B8D270CA6000056FA6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752B8C270CA6000056FA6D /* AppDelegate.swift */; };
 		03752B8F270CA6000056FA6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752B8E270CA6000056FA6D /* SceneDelegate.swift */; };
-		03752B96270CA60A0056FA6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03752B95270CA60A0056FA6D /* Assets.xcassets */; };
 		03752B99270CA60A0056FA6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03752B97270CA60A0056FA6D /* LaunchScreen.storyboard */; };
 		03752BA4270CA60A0056FA6D /* Home_AssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BA3270CA60A0056FA6D /* Home_AssignmentTests.swift */; };
 		03752BAF270CA60A0056FA6D /* Home_AssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BAE270CA60A0056FA6D /* Home_AssignmentUITests.swift */; };
-		03752BC6270CA6BA0056FA6D /* GuidomiaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BC5270CA6BA0056FA6D /* GuidomiaViewController.swift */; };
+		03752BF1270CE4DC0056FA6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03752BD9270CE4DC0056FA6D /* Assets.xcassets */; };
+		03752BF2270CE4DC0056FA6D /* car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 03752BDB270CE4DC0056FA6D /* car_list.json */; };
+		03752BF3270CE4DC0056FA6D /* GuidomiaFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BDF270CE4DC0056FA6D /* GuidomiaFormatter.swift */; };
+		03752BF4270CE4DC0056FA6D /* GuidomiaPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BE0270CE4DC0056FA6D /* GuidomiaPresenter.swift */; };
+		03752BF5270CE4DC0056FA6D /* CarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BE3270CE4DC0056FA6D /* CarCell.swift */; };
+		03752BF6270CE4DC0056FA6D /* CarCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BE4270CE4DC0056FA6D /* CarCell2.swift */; };
+		03752BF7270CE4DC0056FA6D /* CarCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03752BE5270CE4DC0056FA6D /* CarCell2.xib */; };
+		03752BF8270CE4DC0056FA6D /* CarCellFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BE6270CE4DC0056FA6D /* CarCellFormatter.swift */; };
+		03752BF9270CE4DC0056FA6D /* CarDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BE8270CE4DC0056FA6D /* CarDetails.swift */; };
+		03752BFA270CE4DC0056FA6D /* GuidomiaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BEA270CE4DC0056FA6D /* GuidomiaViewController.swift */; };
+		03752BFB270CE4DC0056FA6D /* JsonDecodingFromFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BEC270CE4DC0056FA6D /* JsonDecodingFromFile.swift */; };
+		03752BFC270CE4DC0056FA6D /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BEE270CE4DC0056FA6D /* UIView+Extensions.swift */; };
+		03752BFD270CE4DC0056FA6D /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BEF270CE4DC0056FA6D /* Color+Extensions.swift */; };
+		03752BFE270CE4DC0056FA6D /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BF0270CE4DC0056FA6D /* UILabel+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +49,6 @@
 		03752B89270CA6000056FA6D /* Home_Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Home_Assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03752B8C270CA6000056FA6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03752B8E270CA6000056FA6D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		03752B95270CA60A0056FA6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03752B98270CA60A0056FA6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03752B9A270CA60A0056FA6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03752B9F270CA60A0056FA6D /* Home_AssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Home_AssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,7 +57,20 @@
 		03752BAA270CA60A0056FA6D /* Home_AssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Home_AssignmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03752BAE270CA60A0056FA6D /* Home_AssignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_AssignmentUITests.swift; sourceTree = "<group>"; };
 		03752BB0270CA60A0056FA6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03752BC5270CA6BA0056FA6D /* GuidomiaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidomiaViewController.swift; sourceTree = "<group>"; };
+		03752BD9270CE4DC0056FA6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		03752BDB270CE4DC0056FA6D /* car_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = car_list.json; sourceTree = "<group>"; };
+		03752BDF270CE4DC0056FA6D /* GuidomiaFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidomiaFormatter.swift; sourceTree = "<group>"; };
+		03752BE0270CE4DC0056FA6D /* GuidomiaPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidomiaPresenter.swift; sourceTree = "<group>"; };
+		03752BE3270CE4DC0056FA6D /* CarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCell.swift; sourceTree = "<group>"; };
+		03752BE4270CE4DC0056FA6D /* CarCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCell2.swift; sourceTree = "<group>"; };
+		03752BE5270CE4DC0056FA6D /* CarCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarCell2.xib; sourceTree = "<group>"; };
+		03752BE6270CE4DC0056FA6D /* CarCellFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCellFormatter.swift; sourceTree = "<group>"; };
+		03752BE8270CE4DC0056FA6D /* CarDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDetails.swift; sourceTree = "<group>"; };
+		03752BEA270CE4DC0056FA6D /* GuidomiaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidomiaViewController.swift; sourceTree = "<group>"; };
+		03752BEC270CE4DC0056FA6D /* JsonDecodingFromFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonDecodingFromFile.swift; sourceTree = "<group>"; };
+		03752BEE270CE4DC0056FA6D /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		03752BEF270CE4DC0056FA6D /* Color+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		03752BF0270CE4DC0056FA6D /* UILabel+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,10 +121,12 @@
 		03752B8B270CA6000056FA6D /* Home_Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				03752BED270CE4DC0056FA6D /* Extensions */,
+				03752BDC270CE4DC0056FA6D /* Modules */,
+				03752BD8270CE4DC0056FA6D /* Resources */,
+				03752BEB270CE4DC0056FA6D /* Utilities */,
 				03752B8C270CA6000056FA6D /* AppDelegate.swift */,
 				03752B8E270CA6000056FA6D /* SceneDelegate.swift */,
-				03752BCA270CA6BE0056FA6D /* ViewController */,
-				03752B95270CA60A0056FA6D /* Assets.xcassets */,
 				03752B97270CA60A0056FA6D /* LaunchScreen.storyboard */,
 				03752B9A270CA60A0056FA6D /* Info.plist */,
 			);
@@ -125,12 +151,102 @@
 			path = Home_AssignmentUITests;
 			sourceTree = "<group>";
 		};
-		03752BCA270CA6BE0056FA6D /* ViewController */ = {
+		03752BD8270CE4DC0056FA6D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				03752BC5270CA6BA0056FA6D /* GuidomiaViewController.swift */,
+				03752BD9270CE4DC0056FA6D /* Assets.xcassets */,
+				03752BDA270CE4DC0056FA6D /* Json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		03752BDA270CE4DC0056FA6D /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				03752BDB270CE4DC0056FA6D /* car_list.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		03752BDC270CE4DC0056FA6D /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				03752BDD270CE4DC0056FA6D /* CarModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		03752BDD270CE4DC0056FA6D /* CarModule */ = {
+			isa = PBXGroup;
+			children = (
+				03752BDE270CE4DC0056FA6D /* Presenter */,
+				03752BE1270CE4DC0056FA6D /* Subviews */,
+				03752BE7270CE4DC0056FA6D /* Modal */,
+				03752BE9270CE4DC0056FA6D /* ViewController */,
+			);
+			path = CarModule;
+			sourceTree = "<group>";
+		};
+		03752BDE270CE4DC0056FA6D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				03752BDF270CE4DC0056FA6D /* GuidomiaFormatter.swift */,
+				03752BE0270CE4DC0056FA6D /* GuidomiaPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		03752BE1270CE4DC0056FA6D /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				03752BE2270CE4DC0056FA6D /* Cells */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		03752BE2270CE4DC0056FA6D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				03752BE3270CE4DC0056FA6D /* CarCell.swift */,
+				03752BE4270CE4DC0056FA6D /* CarCell2.swift */,
+				03752BE5270CE4DC0056FA6D /* CarCell2.xib */,
+				03752BE6270CE4DC0056FA6D /* CarCellFormatter.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		03752BE7270CE4DC0056FA6D /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				03752BE8270CE4DC0056FA6D /* CarDetails.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		03752BE9270CE4DC0056FA6D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				03752BEA270CE4DC0056FA6D /* GuidomiaViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		03752BEB270CE4DC0056FA6D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				03752BEC270CE4DC0056FA6D /* JsonDecodingFromFile.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		03752BED270CE4DC0056FA6D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				03752BEE270CE4DC0056FA6D /* UIView+Extensions.swift */,
+				03752BEF270CE4DC0056FA6D /* Color+Extensions.swift */,
+				03752BF0270CE4DC0056FA6D /* UILabel+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,8 +352,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03752BF1270CE4DC0056FA6D /* Assets.xcassets in Resources */,
+				03752BF7270CE4DC0056FA6D /* CarCell2.xib in Resources */,
+				03752BF2270CE4DC0056FA6D /* car_list.json in Resources */,
 				03752B99270CA60A0056FA6D /* LaunchScreen.storyboard in Resources */,
-				03752B96270CA60A0056FA6D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +380,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03752BFB270CE4DC0056FA6D /* JsonDecodingFromFile.swift in Sources */,
 				03752B8D270CA6000056FA6D /* AppDelegate.swift in Sources */,
+				03752BF4270CE4DC0056FA6D /* GuidomiaPresenter.swift in Sources */,
+				03752BFE270CE4DC0056FA6D /* UILabel+Extensions.swift in Sources */,
+				03752BF3270CE4DC0056FA6D /* GuidomiaFormatter.swift in Sources */,
+				03752BF6270CE4DC0056FA6D /* CarCell2.swift in Sources */,
+				03752BF8270CE4DC0056FA6D /* CarCellFormatter.swift in Sources */,
+				03752BF5270CE4DC0056FA6D /* CarCell.swift in Sources */,
 				03752B8F270CA6000056FA6D /* SceneDelegate.swift in Sources */,
-				03752BC6270CA6BA0056FA6D /* GuidomiaViewController.swift in Sources */,
+				03752BF9270CE4DC0056FA6D /* CarDetails.swift in Sources */,
+				03752BFA270CE4DC0056FA6D /* GuidomiaViewController.swift in Sources */,
+				03752BFC270CE4DC0056FA6D /* UIView+Extensions.swift in Sources */,
+				03752BFD270CE4DC0056FA6D /* Color+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
