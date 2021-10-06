@@ -27,14 +27,15 @@ final class GuidomiaViewController: UIViewController {
         return table
     }()
     
-    private lazy var textFieldsPicker: UIPickerView = {
-        let picker = UIPickerView()
+    private lazy var textFieldsPicker: ToolbarPickerView = {
+        let picker = ToolbarPickerView()
         picker.dataSource = self
         picker.delegate = self
+        picker.toolbarDelegate = self
         return picker
     }()
     
-    private var textFieldsPickerArray = ["String", "abc"]
+    private var pickerDataSource: [CarDetails]?
     
     private var showingModelPicker = false
     
@@ -47,20 +48,18 @@ final class GuidomiaViewController: UIViewController {
     }
     
     private(set) lazy var modelTextField: UITextField = {
-        let textField = UITextField()
+        let textField = UITextField.createTextField(placeholder: Constant.anyModelPlaceholder)
         textField.inputView = textFieldsPicker
+        textField.inputAccessoryView = textFieldsPicker.toolbar
         textField.delegate = self
-        textField.backgroundColor = UIColor.white
-        textField.placeholder = Constant.anyModelPlaceholder
         return textField
     }()
     
     private(set) lazy var makeTextField: UITextField = {
-        let textField = UITextField()
+        let textField = UITextField.createTextField(placeholder: Constant.anyMakePlaceholder)
         textField.inputView = textFieldsPicker
+        textField.inputAccessoryView = textFieldsPicker.toolbar
         textField.delegate = self
-        textField.backgroundColor = UIColor.white
-        textField.placeholder = Constant.anyMakePlaceholder
         return textField
     }()
     
@@ -83,7 +82,7 @@ final class GuidomiaViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        presenter?.getAllCars()
+        presenter?.displayAllCars()
     }
 }
 
@@ -106,7 +105,7 @@ private extension GuidomiaViewController {
 }
 
 extension GuidomiaViewController: GuidomiaDisplay {
-    func loadAllCell(with modals: [CarDetails]) {
+    func loadCell(with modals: [CarDetails]) {
         carDetails = modals
     }
 }
@@ -131,8 +130,7 @@ extension GuidomiaViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 protocol GuidomiaDisplay {
-    func loadAllCell(with modals: [CarDetails])
-
+    func loadCell(with modals: [CarDetails])
 }
 
 extension GuidomiaViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -141,19 +139,51 @@ extension GuidomiaViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        textFieldsPickerArray.count
+        pickerDataSource?.count ?? 0
     }
     
     func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        textFieldsPickerArray[row]
+        showingModelPicker ? pickerDataSource?[row].model ?? ""  : pickerDataSource?[row].make ?? ""
     }
-
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if showingModelPicker {
+            modelTextField.text = pickerDataSource?[row].model ?? ""
+        } else {
+            makeTextField.text = pickerDataSource?[row].make ?? ""
+        }
+    }
 }
 
 extension GuidomiaViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         showingModelPicker = textField == modelTextField ? true : false
+        pickerDataSource = presenter?.getCarsForAppliedFilter()
         textFieldsPicker.reloadAllComponents()
         return true
+    }
+}
+
+extension GuidomiaViewController: ToolbarPickerViewDelegate {
+    func didTapDone() {
+        defer {
+            view.endEditing(true)
+        }
+        if showingModelPicker,
+           !modelTextField.string.isEmpty {
+            modelTextField.addButton()
+            
+            presenter?.applyFilter(for: Filter.model(name: modelTextField.string))
+            
+        } else if !showingModelPicker,
+                  !makeTextField.string.isEmpty {
+            makeTextField.addButton()
+
+            presenter?.applyFilter(for: Filter.make(name: makeTextField.string))
+        }
+    }
+    
+    func didTapCancel() {
+        view.endEditing(true)
     }
 }

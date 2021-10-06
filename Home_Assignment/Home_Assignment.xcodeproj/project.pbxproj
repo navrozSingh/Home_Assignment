@@ -10,6 +10,10 @@
 		034E0DB5270D6DDF00A9687F /* CarCellheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DB4270D6DDF00A9687F /* CarCellheader.swift */; };
 		034E0DBD270D8E5000A9687F /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */; };
 		034E0DC3270DD02400A9687F /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DC2270DD02400A9687F /* UIFont+Extensions.swift */; };
+		034E0DCB270DE9B900A9687F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DCA270DE9B800A9687F /* String+Extensions.swift */; };
+		034E0DD0270DEDDB00A9687F /* UITextfield+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DCF270DEDDB00A9687F /* UITextfield+Extensions.swift */; };
+		034E0DD5270DFAD800A9687F /* ToolbarPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DD4270DFAD800A9687F /* ToolbarPickerView.swift */; };
+		034E0DDA270E0F2A00A9687F /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DD9270E0F2A00A9687F /* UIControl+Extensions.swift */; };
 		03752B8D270CA6000056FA6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752B8C270CA6000056FA6D /* AppDelegate.swift */; };
 		03752B8F270CA6000056FA6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752B8E270CA6000056FA6D /* SceneDelegate.swift */; };
 		03752B99270CA60A0056FA6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03752B97270CA60A0056FA6D /* LaunchScreen.storyboard */; };
@@ -52,6 +56,10 @@
 		034E0DB4270D6DDF00A9687F /* CarCellheader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCellheader.swift; sourceTree = "<group>"; };
 		034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		034E0DC2270DD02400A9687F /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		034E0DCA270DE9B800A9687F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		034E0DCF270DEDDB00A9687F /* UITextfield+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+Extensions.swift"; sourceTree = "<group>"; };
+		034E0DD4270DFAD800A9687F /* ToolbarPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPickerView.swift; sourceTree = "<group>"; };
+		034E0DD9270E0F2A00A9687F /* UIControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extensions.swift"; sourceTree = "<group>"; };
 		03752B89270CA6000056FA6D /* Home_Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Home_Assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03752B8C270CA6000056FA6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03752B8E270CA6000056FA6D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -250,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				03752BEC270CE4DC0056FA6D /* JsonDecodingFromFile.swift */,
+				034E0DD4270DFAD800A9687F /* ToolbarPickerView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -262,6 +271,9 @@
 				03752BF0270CE4DC0056FA6D /* UILabel+Extensions.swift */,
 				034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */,
 				034E0DC2270DD02400A9687F /* UIFont+Extensions.swift */,
+				034E0DCA270DE9B800A9687F /* String+Extensions.swift */,
+				034E0DCF270DEDDB00A9687F /* UITextfield+Extensions.swift */,
+				034E0DD9270E0F2A00A9687F /* UIControl+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -397,11 +409,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				034E0DD5270DFAD800A9687F /* ToolbarPickerView.swift in Sources */,
 				03752BFB270CE4DC0056FA6D /* JsonDecodingFromFile.swift in Sources */,
+				034E0DD0270DEDDB00A9687F /* UITextfield+Extensions.swift in Sources */,
 				03752B8D270CA6000056FA6D /* AppDelegate.swift in Sources */,
 				034E0DC3270DD02400A9687F /* UIFont+Extensions.swift in Sources */,
 				03752BF4270CE4DC0056FA6D /* GuidomiaPresenter.swift in Sources */,
 				03752BFE270CE4DC0056FA6D /* UILabel+Extensions.swift in Sources */,
+				034E0DDA270E0F2A00A9687F /* UIControl+Extensions.swift in Sources */,
 				03752BF3270CE4DC0056FA6D /* GuidomiaFormatter.swift in Sources */,
 				03752BF6270CE4DC0056FA6D /* CarCell2.swift in Sources */,
 				03752BF8270CE4DC0056FA6D /* CarCellFormatter.swift in Sources */,
@@ -409,6 +424,7 @@
 				03752B8F270CA6000056FA6D /* SceneDelegate.swift in Sources */,
 				034E0DBD270D8E5000A9687F /* NavigationController+Extensions.swift in Sources */,
 				03752BF9270CE4DC0056FA6D /* CarDetails.swift in Sources */,
+				034E0DCB270DE9B900A9687F /* String+Extensions.swift in Sources */,
 				03752BFA270CE4DC0056FA6D /* GuidomiaViewController.swift in Sources */,
 				03752BFC270CE4DC0056FA6D /* UIView+Extensions.swift in Sources */,
 				03752BFD270CE4DC0056FA6D /* Color+Extensions.swift in Sources */,

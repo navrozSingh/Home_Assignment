@@ -27,7 +27,7 @@ class CarCellFormatter {
 
     }
     
-    class func getCarPrice(price: Double?) -> String {
+    private class func getCarPrice(price: Double?) -> String {
         guard let price = price else {
             return Constant.notAvaialble
         }
@@ -44,12 +44,12 @@ class CarCellFormatter {
         if let pros = pros?.compactMap({ $0.count > 0 ? $0 : nil }),
            !pros.isEmpty {
             result.append(prosConsString(for: "Pros: \n"))
-            result.append(add(bulletList: pros, font: UIFont.bold))
+            result.append(String.add(bulletList: pros, font: UIFont.bold))
         }
         if  let cons = cons?.compactMap({$0.count > 0 ? $0 : nil}),
             !cons.isEmpty {
             result.append(prosConsString(for: "Cons: \n"))
-            result.append(add(bulletList: cons, font: UIFont.bold))
+            result.append(String.add(bulletList: cons, font: UIFont.bold))
         }
         return result
     }
@@ -64,61 +64,24 @@ class CarCellFormatter {
         return attributedString
     }
     
-    class func add(bulletList strings: [String],
-             font: UIFont,
-             indentation: CGFloat = 15,
-             lineSpacing: CGFloat = 2,
-             paragraphSpacing: CGFloat = 5,
-             textColor: UIColor = .textColor,
-             bulletColor: UIColor = .orange) -> NSAttributedString {
-        
-         func createParagraphAttirbute() -> NSParagraphStyle {
-            var paragraphStyle: NSMutableParagraphStyle
-            let nonOptions = NSDictionary() as! [NSTextTab.OptionKey: Any]
-            
-            paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
-            paragraphStyle.tabStops = [
-                NSTextTab(textAlignment: .left, location: indentation, options: nonOptions)]
-            paragraphStyle.defaultTabInterval = indentation
-            paragraphStyle.firstLineHeadIndent = 0
-            paragraphStyle.lineSpacing = lineSpacing
-            paragraphStyle.paragraphSpacing = paragraphSpacing
-            paragraphStyle.headIndent = indentation
-            return paragraphStyle
-        }
-        
-        let bulletPoint = "\u{2022}"
-        let textAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.smallBold, .foregroundColor: textColor]
-        let bulletAttributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: bulletColor]
-        let buffer = NSMutableAttributedString.init()
-        
-        for string in strings {
-            let formattedString = "\(bulletPoint)\t\(string)\n"
-            let attributedString = NSMutableAttributedString(string: formattedString)
-            let paragraphStyle = createParagraphAttirbute()
-            
-            attributedString.addAttributes(
-                [NSAttributedString.Key.paragraphStyle : paragraphStyle],
-                range: NSMakeRange(0, attributedString.length))
-            
-            attributedString.addAttributes(
-                textAttributes,
-                range: NSMakeRange(0, attributedString.length))
-            
-            let string:NSString = NSString(string: formattedString)
-            let rangeForBullet:NSRange = string.range(of: bulletPoint)
-            attributedString.addAttributes(bulletAttributes, range: rangeForBullet)
-            buffer.append(attributedString)
-        }
-        
-        return buffer
-    }
-    
-    class func carName(from modal: CarDetails?) -> String {
+    private class func carName(from modal: CarDetails?) -> String {
         guard let modal = modal else {
             return Constant.notAvaialble
         }
-        return (modal.make ?? "") + " " + (modal.model ?? "")
+        return (modal.make ?? "") + " " + (modal.model ?? "") + "\n"
+    }
+    
+    class func carNameAndPrice(modal: CarDetails?) -> NSAttributedString {
+        let nameAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.bold, .foregroundColor: UIColor.darkGray]
+
+        let priceAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.semiBold, .foregroundColor: UIColor.darkGray]
+         
+        let name = NSMutableAttributedString(string: carName(from: modal),
+                                      attributes: nameAttributes)
+        let price = NSAttributedString(string: getCarPrice(price: modal?.customerPrice),
+                                       attributes: priceAttributes)
+        name.append(price)
+        return name 
     }
     
     class func imageMapper(modal: String?) -> UIImage {

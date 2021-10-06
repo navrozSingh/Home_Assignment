@@ -34,10 +34,9 @@ final class CarCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fillProportionally
-        stackView.addArrangedSubview(carName)
-        stackView.addArrangedSubview(carPrice)
+        stackView.alignment = .leading
+        stackView.distribution = .fillEqually
+        stackView.addArrangedSubview(carNamePrice)
         stackView.addArrangedSubview(starView)
         return stackView
     }()
@@ -86,15 +85,14 @@ final class CarCell: UITableViewCell {
     
     private lazy var prosConsTextViewHeight = prosConsTextView.heightAnchor.constraint(equalToConstant: Constant.defaultHeightProsConsHeight)
     
-    private lazy var carName: UILabel = {
-        let label = UILabel.createLabel(numberOfLines: 0, font: UIFont.bold, color: UIColor.darkGray)
-        let constraint = label.heightAnchor.constraint(lessThanOrEqualToConstant: Constant.padding)
-        constraint.isActive = true
-        constraint.priority = .defaultLow
+    // Used one label to match UI
+    private lazy var carNamePrice: UILabel = {
+        let label = UILabel.createLabel(numberOfLines: 0)
+//        label.heightAnchor.constraint(lessThanOrEqualToConstant: 120).isActive = true
+//        constraint.isActive = true
+//        constraint.priority = .defaultLow
         return label
     }()
-    
-    private lazy var carPrice = UILabel.createLabel(font: UIFont.semiBold, color: UIColor.darkGray)
     
     private lazy var starView = UILabel.createLabel(font: UIFont.bold, color: UIColor.orange)
     
@@ -102,11 +100,6 @@ final class CarCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            imageView.heightAnchor.constraint(lessThanOrEqualToConstant: Constant.imageHeight),
-//            imageView.widthAnchor.constraint(lessThanOrEqualToConstant: Constant.imageWidth)
-//
-//        ])
         return imageView
     }()
     
@@ -126,13 +119,8 @@ final class CarCell: UITableViewCell {
     }
 
     func configureCell(with modal: CarDetails?, showProsCons: Bool = false) {
-//        mainStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-//        mainStackView.addArrangedSubview(horizontalCarDetailsStack)
-//        mainStackView.addArrangedSubview(prosConsTextView)
-
         self.contentView.backgroundColor = UIColor.lightGray
-        carName.text = CarCellFormatter.carName(from: modal)
-        carPrice.text = CarCellFormatter.getCarPrice(price: modal?.customerPrice)
+        carNamePrice.attributedText = CarCellFormatter.carNameAndPrice(modal: modal)
         carImage.image = CarCellFormatter.imageMapper(modal: modal?.model)
         starView.text = CarCellFormatter.star(rating: modal?.rating)
         if showProsCons,

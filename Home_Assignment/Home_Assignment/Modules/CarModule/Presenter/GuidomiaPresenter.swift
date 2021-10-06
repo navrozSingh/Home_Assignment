@@ -10,13 +10,13 @@ import Foundation
 class GuidomiaPresenter: GuidomiaPresenterRequirements {
     var indexToOpen: Int? {
         didSet {
-            if !filterApplied {
-                display?.loadAllCell(with: formatter.getCars())
+            if !filterAppled() {
+                display?.loadCell(with: formatter.getCars())
             }
         }
     }
     
-    private var filterApplied = false
+    private var appliedFilter = [String: Filter]()
     
     private var display: GuidomiaDisplay?
     
@@ -30,23 +30,47 @@ class GuidomiaPresenter: GuidomiaPresenterRequirements {
         self.formatter = formatter
     }
 
-    func getAllCars() {
-        display?.loadAllCell(with: formatter.getCars())
+    func displayAllCars() {
+        display?.loadCell(with: formatter.getCars())
     }
 
-    func filterCars(for filter: Filter) {
+    func getCarsForAppliedFilter() -> [CarDetails] {
         
+        var result = formatter.getCars()
+        
+        if case .make(let name) = appliedFilter["make"] {
+            result = result.filter{ $0.make == name }
+        } else if case .model(let name) = appliedFilter["model"] {
+            result = result.filter{ $0.model == name }
+        }
+        
+        return result
+    }
+
+    func applyFilter(for filter: Filter) {
+        
+        switch filter {
+            case .make(name: _): appliedFilter["make"] = filter
+            case .model(name: _): appliedFilter["model"] = filter
+        }
+        display?.loadCell(with: getCarsForAppliedFilter())
+    }
+    
+    func filterAppled() -> Bool {
+        !appliedFilter.keys.isEmpty
     }
 }
 
 
 protocol GuidomiaPresenterRequirements {
-    func getAllCars()
-    func filterCars(for filter: Filter)
+    func displayAllCars()
+    func getCarsForAppliedFilter() -> [CarDetails]
+    func applyFilter(for: Filter)
     var indexToOpen: Int? { get set }
+    func filterAppled() -> Bool
 }
 
 enum Filter {
-    case make(year: Int)
-    case modal(name: String)
+    case make(name: String)
+    case model(name: String)
 }

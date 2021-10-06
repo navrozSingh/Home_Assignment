@@ -17,6 +17,7 @@ extension UINavigationController {
     func leftAlignedTitle(title: String, frontPadding: CGFloat = 16) -> UIView {
         let titleLabel = UILabel()
         titleLabel.text = title
+        titleLabel.font = UIFont.boldForTitle
         titleLabel.textColor = .white
         let frontSpacer = UIView()
         let spacer = UIView()

@@ -9,6 +9,10 @@ import UIKit
 
 extension UIFont {
     
+    static var boldForTitle: UIFont {
+        return UIFont.boldSystemFont(ofSize: 30)
+    }
+
     static var bold: UIFont {
         return UIFont.boldSystemFont(ofSize: 20)
     }

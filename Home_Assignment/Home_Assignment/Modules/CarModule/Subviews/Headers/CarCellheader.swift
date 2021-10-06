@@ -16,6 +16,7 @@ class CarCellheader: UIView {
         static let paddingForFilter: CGFloat = 16
         static let headerCarImage = UIImage(named: "Tacoma")!
         static let filerPlaceholder = "Filter"
+        static let cornerRadius: CGFloat = 8
     }
     
     override init(frame: CGRect) {
@@ -28,13 +29,12 @@ class CarCellheader: UIView {
         setupUI()
     }
     
-    private lazy var filterLabel : UILabel = {
-        let label = UILabel.createLabel()
+    private lazy var filterLabel: UILabel = {
+        let label = UILabel.createLabel(font: UIFont.bold, color: .white)
         label.text = Constant.filerPlaceholder
-        label.textColor = UIColor.white
         return label
     }()
-            
+    
     private lazy var containerView: UIView = {
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -46,6 +46,7 @@ class CarCellheader: UIView {
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.backgroundColor = .darkGray
+        containerView.layer.cornerRadius = Constant.cornerRadius
         return containerView
     }()
 
@@ -70,9 +71,6 @@ class CarCellheader: UIView {
     func addTextFieldsToStacks(makeTextField: UITextField, modelTextField: UITextField) {
         filterStack.addArrangedSubview(makeTextField)
         filterStack.addArrangedSubview(modelTextField)
-    }
-    
-    func configure(with text: String, totalSelectedCurrency: Int) {
     }
 }
 
