@@ -103,22 +103,6 @@ private extension GuidomiaViewController {
         navigationController?.addCustomColorToNavigationBar(color: .orange)
         navigationItem.titleView = navigationController?.leftAlignedTitle(title: Constant.title)
     }
-    
-    func leftAlignedTitle(title: String, frontPadding: CGFloat = 16) {
-        let titleLabel = UILabel()
-        titleLabel.text = title
-        titleLabel.textColor = .white
-        let frontSpacer = UIView()
-        let spacer = UIView()
-        let constraint = spacer.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width)
-        constraint.isActive = true
-        constraint.priority = .defaultLow
-        frontSpacer.widthAnchor.constraint(equalToConstant: frontPadding).isActive = true
-        let stack = UIStackView(arrangedSubviews: [frontSpacer,titleLabel, spacer])
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .horizontal
-        self.navigationItem.titleView = stack
-    }
 }
 
 extension GuidomiaViewController: GuidomiaDisplay {
@@ -136,8 +120,13 @@ extension GuidomiaViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CarCell") as? CarCell else {
             preconditionFailure("cell configuration issue")
         }
-        cell.configureCell(with: carDetails?[indexPath.row])
+        cell.configureCell(with: carDetails?[indexPath.row],
+                           showProsCons: presenter?.indexToOpen ?? 0 == indexPath.row)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.indexToOpen = indexPath.row
     }
 }
 

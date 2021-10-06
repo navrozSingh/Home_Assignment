@@ -8,8 +8,21 @@
 import Foundation
 
 class GuidomiaPresenter: GuidomiaPresenterRequirements {
+    var indexToOpen: Int? {
+        didSet {
+            if !filterApplied {
+                display?.loadAllCell(with: formatter.getCars())
+            }
+        }
+    }
+    
+    private var filterApplied = false
+    
     private var display: GuidomiaDisplay?
+    
     private let formatter: GuidomiaFormatter
+    
+    private var allCars: [CarDetails]?
     
     init(display: GuidomiaDisplay,
          formatter: GuidomiaFormatter = .init()) {
@@ -18,10 +31,7 @@ class GuidomiaPresenter: GuidomiaPresenterRequirements {
     }
 
     func getAllCars() {
-        guard let carDetails = formatter.getCarsFromJson() else {
-            preconditionFailure("Unable to read from Json File")
-        }
-        display?.loadAllCell(with: carDetails)
+        display?.loadAllCell(with: formatter.getCars())
     }
 
     func filterCars(for filter: Filter) {
@@ -33,6 +43,7 @@ class GuidomiaPresenter: GuidomiaPresenterRequirements {
 protocol GuidomiaPresenterRequirements {
     func getAllCars()
     func filterCars(for filter: Filter)
+    var indexToOpen: Int? { get set }
 }
 
 enum Filter {

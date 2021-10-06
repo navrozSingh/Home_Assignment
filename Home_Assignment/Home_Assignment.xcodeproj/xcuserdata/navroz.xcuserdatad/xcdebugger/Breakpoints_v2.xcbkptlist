@@ -39,17 +39,29 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "671D7FCA-F14A-47A5-A118-2E53873F3000"
+            uuid = "437CB1FF-7693-4293-A233-1DB6C611422A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Home_Assignment/Extensions/NavigationController+Extensions.swift"
+            filePath = "Home_Assignment/Modules/CarModule/Subviews/Cells/CarCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "leftAlignedTitle(title:frontPadding:)"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "configureCell(with:showProsCons:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            uuid = "0BF1414D-F2A8-4115-A712-EC511CA9FEA3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

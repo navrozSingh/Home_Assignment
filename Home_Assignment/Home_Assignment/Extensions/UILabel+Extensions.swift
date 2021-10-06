@@ -9,12 +9,14 @@ import UIKit
 
 extension UILabel {
     
-    class func createLabel(textStyle: UIFont.TextStyle = .body , numberOfLines: Int = 1) -> UILabel {
+    class func createLabel(numberOfLines: Int = 1,
+                           font: UIFont = UIFont.smallBold,
+                           color: UIColor = UIColor.textColor) -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.black
+        label.textColor = color
+        label.font = font
         label.numberOfLines = numberOfLines
-        label.font = UIFont.preferredFont(forTextStyle: textStyle)
         return label
     }
 }

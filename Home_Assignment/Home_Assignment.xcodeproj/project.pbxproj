@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		034E0DB5270D6DDF00A9687F /* CarCellheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DB4270D6DDF00A9687F /* CarCellheader.swift */; };
 		034E0DBD270D8E5000A9687F /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */; };
+		034E0DC3270DD02400A9687F /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DC2270DD02400A9687F /* UIFont+Extensions.swift */; };
 		03752B8D270CA6000056FA6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752B8C270CA6000056FA6D /* AppDelegate.swift */; };
 		03752B8F270CA6000056FA6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752B8E270CA6000056FA6D /* SceneDelegate.swift */; };
 		03752B99270CA60A0056FA6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03752B97270CA60A0056FA6D /* LaunchScreen.storyboard */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		034E0DB4270D6DDF00A9687F /* CarCellheader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCellheader.swift; sourceTree = "<group>"; };
 		034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
+		034E0DC2270DD02400A9687F /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		03752B89270CA6000056FA6D /* Home_Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Home_Assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03752B8C270CA6000056FA6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03752B8E270CA6000056FA6D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				03752BEF270CE4DC0056FA6D /* Color+Extensions.swift */,
 				03752BF0270CE4DC0056FA6D /* UILabel+Extensions.swift */,
 				034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */,
+				034E0DC2270DD02400A9687F /* UIFont+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 			files = (
 				03752BFB270CE4DC0056FA6D /* JsonDecodingFromFile.swift in Sources */,
 				03752B8D270CA6000056FA6D /* AppDelegate.swift in Sources */,
+				034E0DC3270DD02400A9687F /* UIFont+Extensions.swift in Sources */,
 				03752BF4270CE4DC0056FA6D /* GuidomiaPresenter.swift in Sources */,
 				03752BFE270CE4DC0056FA6D /* UILabel+Extensions.swift in Sources */,
 				03752BF3270CE4DC0056FA6D /* GuidomiaFormatter.swift in Sources */,
