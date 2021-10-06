@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		034E0DB5270D6DDF00A9687F /* CarCellheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DB4270D6DDF00A9687F /* CarCellheader.swift */; };
+		034E0DBD270D8E5000A9687F /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */; };
 		03752B8D270CA6000056FA6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752B8C270CA6000056FA6D /* AppDelegate.swift */; };
 		03752B8F270CA6000056FA6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752B8E270CA6000056FA6D /* SceneDelegate.swift */; };
 		03752B99270CA60A0056FA6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03752B97270CA60A0056FA6D /* LaunchScreen.storyboard */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		034E0DB4270D6DDF00A9687F /* CarCellheader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCellheader.swift; sourceTree = "<group>"; };
+		034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		03752B89270CA6000056FA6D /* Home_Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Home_Assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03752B8C270CA6000056FA6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03752B8E270CA6000056FA6D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		034E0DB3270D6DDF00A9687F /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				034E0DB4270D6DDF00A9687F /* CarCellheader.swift */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
 		03752B80270CA6000056FA6D = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +211,7 @@
 		03752BE1270CE4DC0056FA6D /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				034E0DB3270D6DDF00A9687F /* Headers */,
 				03752BE2270CE4DC0056FA6D /* Cells */,
 			);
 			path = Subviews;
@@ -245,6 +258,7 @@
 				03752BEE270CE4DC0056FA6D /* UIView+Extensions.swift */,
 				03752BEF270CE4DC0056FA6D /* Color+Extensions.swift */,
 				03752BF0270CE4DC0056FA6D /* UILabel+Extensions.swift */,
+				034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -389,10 +403,12 @@
 				03752BF8270CE4DC0056FA6D /* CarCellFormatter.swift in Sources */,
 				03752BF5270CE4DC0056FA6D /* CarCell.swift in Sources */,
 				03752B8F270CA6000056FA6D /* SceneDelegate.swift in Sources */,
+				034E0DBD270D8E5000A9687F /* NavigationController+Extensions.swift in Sources */,
 				03752BF9270CE4DC0056FA6D /* CarDetails.swift in Sources */,
 				03752BFA270CE4DC0056FA6D /* GuidomiaViewController.swift in Sources */,
 				03752BFC270CE4DC0056FA6D /* UIView+Extensions.swift in Sources */,
 				03752BFD270CE4DC0056FA6D /* Color+Extensions.swift in Sources */,
+				034E0DB5270D6DDF00A9687F /* CarCellheader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
