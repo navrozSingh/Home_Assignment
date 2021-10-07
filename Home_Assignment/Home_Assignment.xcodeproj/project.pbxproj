@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0345A337270F071700F5CFA1 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A336270F071700F5CFA1 /* UIView+Extensions.swift */; };
+		0345A33C270F0D9800F5CFA1 /* GlobalConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A33B270F0D9800F5CFA1 /* GlobalConstant.swift */; };
 		034E0DB5270D6DDF00A9687F /* CarCellheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DB4270D6DDF00A9687F /* CarCellheader.swift */; };
 		034E0DBD270D8E5000A9687F /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */; };
 		034E0DC3270DD02400A9687F /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DC2270DD02400A9687F /* UIFont+Extensions.swift */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		0345A336270F071700F5CFA1 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		0345A33B270F0D9800F5CFA1 /* GlobalConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstant.swift; sourceTree = "<group>"; };
 		034E0DB4270D6DDF00A9687F /* CarCellheader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCellheader.swift; sourceTree = "<group>"; };
 		034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		034E0DC2270DD02400A9687F /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			children = (
 				03752BEC270CE4DC0056FA6D /* JsonDecodingFromFile.swift */,
 				034E0DD4270DFAD800A9687F /* ToolbarPickerView.swift */,
+				0345A33B270F0D9800F5CFA1 /* GlobalConstant.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				03752B8D270CA6000056FA6D /* AppDelegate.swift in Sources */,
 				034E0DC3270DD02400A9687F /* UIFont+Extensions.swift in Sources */,
 				03752BF4270CE4DC0056FA6D /* GuidomiaPresenter.swift in Sources */,
+				0345A33C270F0D9800F5CFA1 /* GlobalConstant.swift in Sources */,
 				03752BFE270CE4DC0056FA6D /* UILabel+Extensions.swift in Sources */,
 				034E0DDA270E0F2A00A9687F /* UIControl+Extensions.swift in Sources */,
 				03752BF3270CE4DC0056FA6D /* GuidomiaFormatter.swift in Sources */,

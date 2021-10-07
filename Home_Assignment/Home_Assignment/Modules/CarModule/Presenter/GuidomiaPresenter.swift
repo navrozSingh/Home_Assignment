@@ -51,8 +51,15 @@ class GuidomiaPresenter: GuidomiaPresenterRequirements {
     func applyFilter(for filter: Filter) {
         
         switch filter {
-            case .make(name: _): appliedFilter[Constant.make] = filter
-            case .model(name: _): appliedFilter[Constant.model] = filter
+            case .make(name: _):
+                appliedFilter[Constant.make] = filter
+                appliedFilter.removeValue(forKey: Constant.model)
+                display?.setModelTextField(text: nil)
+
+            case .model(name: _):
+                appliedFilter[Constant.model] = filter
+                appliedFilter.removeValue(forKey: Constant.make)
+                display?.setMakeTextField(text: nil)
         }
         display?.loadCell(with: getCarsForAppliedFilter())
     }
@@ -61,36 +68,30 @@ class GuidomiaPresenter: GuidomiaPresenterRequirements {
         !appliedFilter.keys.isEmpty
     }
     
-    func modelDataSource() -> [CarDetails] {
-        var result = formatter.getCars()
-        result = result.map {
-            var car = $0
-            if case .make(let name) = appliedFilter[Constant.make],
-               car.make == name {
-                car.filteredApplied = true
-                return car
-            } else if case .model(let name) = appliedFilter[Constant.model],
-                      car.model == name {
-                return car
-            } else {
-                return car
-            }
-        }
-        return result
-    }
-    
-    func getAppliedFilter() -> (String?, String?) {
-        var makeName: String?
-        var modelName: String?
-        
-        if case .make(let name) = appliedFilter[Constant.make] {
-            makeName = name
-        } else if case .model(let name) = appliedFilter[Constant.model] {
-            modelName = name
-        }
-        return (makeName, modelName)
+    func carsForFilter() -> [CarDetails] {
+         formatter.getCars()
     }
 
+    func resetFilters() {
+        appliedFilter.removeAll()
+        indexToOpen = 0
+        
+        display?.setMakeTextField(text: nil)
+        display?.setModelTextField(text: nil)
+    }
+    
+    func setExistingFilters() {
+        var makeName: String?
+        var modelName: String?
+        if case .make(let name) = appliedFilter[Constant.make] {
+            makeName = name
+        }
+        if case .model(let name) = appliedFilter[Constant.model] {
+            modelName = name
+        }
+        display?.setMakeTextField(text: makeName)
+        display?.setModelTextField(text: modelName)
+    }
 }
 
 
@@ -98,9 +99,12 @@ protocol GuidomiaPresenterRequirements {
     var indexToOpen: Int? { get set }
     func displayAllCars()
     func getCarsForAppliedFilter() -> [CarDetails]
-    func modelDataSource() -> [CarDetails]
+    func carsForFilter() -> [CarDetails]
     func applyFilter(for: Filter)
+    func resetFilters()
     func isFilterAppled() -> Bool
+    //Used on Cancel
+    func setExistingFilters()
 }
 
 enum Filter {

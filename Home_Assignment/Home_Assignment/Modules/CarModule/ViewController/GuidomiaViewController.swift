@@ -9,6 +9,8 @@ import UIKit
 
 protocol GuidomiaDisplay {
     func loadCell(with modals: [CarDetails])
+    func setMakeTextField(text: String?)
+    func setModelTextField(text: String?)
 }
 
 final class GuidomiaViewController: UIViewController {
@@ -22,13 +24,12 @@ final class GuidomiaViewController: UIViewController {
         static let anyModelPlaceholder = "Any model"
         static let title = "GUIDOMIA"
         static let selected = " (Selected)"
-        static let cellID = "CarCell"
     }
         
     private let tableView : UITableView = {
         let table = UITableView()
         table.separatorStyle = .none
-        table.register(CarCell.self, forCellReuseIdentifier: Constant.cellID)
+        table.register(CarCell.self, forCellReuseIdentifier: StringConstants.carCellID)
         return table
     }()
     
@@ -73,6 +74,10 @@ final class GuidomiaViewController: UIViewController {
     private lazy var tableHeader: CarCellheader = {
         let header = CarCellheader(frame: Constant.headerFrame)
         header.addTextFieldsToStacks(makeTextField: makeTextField, modelTextField: modelTextField)
+        header.resetFilter.addAction { [weak self] in
+            self?.presenter?.resetFilters()
+            self?.tableHeader.showFilterButton(false)
+        }
         return header
     }()
 
@@ -111,6 +116,14 @@ extension GuidomiaViewController: GuidomiaDisplay {
     func loadCell(with modals: [CarDetails]) {
         carDetails = modals
     }
+    
+    func setMakeTextField(text: String?) {
+        makeTextField.text = text
+    }
+    
+    func setModelTextField(text: String?) {
+        modelTextField.text = text
+    }
 }
 
 extension GuidomiaViewController: UITableViewDataSource {
@@ -120,7 +133,7 @@ extension GuidomiaViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.cellID) as? CarCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StringConstants.carCellID) as? CarCell else {
             preconditionFailure("cell configuration issue")
         }
         cell.configureCell(with: carDetails?[indexPath.row],
@@ -146,11 +159,7 @@ extension GuidomiaViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        var title = showingModelPicker ? pickerDataSource?[row].model ?? ""  : pickerDataSource?[row].make ?? ""
-        if pickerDataSource?[row].filteredApplied ?? false {
-            title = title + Constant.selected
-        }
-        return title
+        return showingModelPicker ? pickerDataSource?[row].model ?? ""  : pickerDataSource?[row].make ?? ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -166,7 +175,7 @@ extension GuidomiaViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         showingModelPicker = textField == modelTextField ? true : false
-        pickerDataSource = presenter?.modelDataSource()
+        pickerDataSource = presenter?.carsForFilter()
         textFieldsPicker.reloadAllComponents()
         return true
     }
@@ -176,19 +185,14 @@ extension GuidomiaViewController: ToolbarPickerViewDelegate {
     func didTapDone() {
         defer {
             view.endEditing(true)
+            tableHeader.showFilterButton(true)
         }
-        if showingModelPicker,
-           !modelTextField.string.isEmpty {
-            presenter?.applyFilter(for: Filter.model(name: modelTextField.string))
-            
-        } else if !showingModelPicker,
-                  !makeTextField.string.isEmpty {
-
-            presenter?.applyFilter(for: Filter.make(name: makeTextField.string))
-        }
+        
+        showingModelPicker ? presenter?.applyFilter(for: Filter.model(name: modelTextField.string)) : presenter?.applyFilter(for: Filter.make(name: makeTextField.string))
     }
     
     func didTapCancel() {
+        presenter?.setExistingFilters()
         view.endEditing(true)
     }
 }
