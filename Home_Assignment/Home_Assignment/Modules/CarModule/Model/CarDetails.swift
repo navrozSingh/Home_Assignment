@@ -8,7 +8,6 @@
 import Foundation
 
 struct CarDetails : Codable {
-//    private(set) var id: String? = NSUUID().uuidString
     let consList: [String]?
     let customerPrice: Double?
     let make: String?

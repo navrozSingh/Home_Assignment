@@ -9,11 +9,16 @@ import Foundation
 
 class JsonDecodingFromFile {
     
-    class func loadJson(fileName: String) -> [CarDetails]? {
+    /**
+     - Function fetch  json from file.
+     - Decode json into Codable
+     - Returns: `[Codable]?` .
+     */
+    class func loadJson<T: Codable>(fileName: String) -> [T]? {
        guard
         let path = Bundle.main.url(forResource: fileName, withExtension: "json"),
         let jsonData = try? Data(contentsOf: path),
-        let modals = try? JSONDecoder().decode([CarDetails].self, from: jsonData)
+        let modals = try? JSONDecoder().decode([T].self, from: jsonData)
        else {
             return nil
        }

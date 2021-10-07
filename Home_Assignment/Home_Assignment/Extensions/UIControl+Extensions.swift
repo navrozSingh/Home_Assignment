@@ -10,7 +10,7 @@ import UIKit
 extension UIControl {
    
     func addAction(for controlEvents: UIControl.Event = .touchUpInside, _ closure: @escaping()->()) {
-        @objc class ClosureSleeve: NSObject {
+        class ClosureSleeve: NSObject {
             let closure:()->()
             init(_ closure: @escaping()->()) { self.closure = closure }
             @objc func invoke() { closure() }

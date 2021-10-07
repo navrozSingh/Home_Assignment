@@ -11,6 +11,10 @@ final class GuidomiaFormatter {
     // For Caching the records
     private var cars: [CarDetails]?
     
+    /**
+     # Function fetch  json from file & cache the records in local variable.
+     - Returns: `[CarDetails]` .
+     */
     func getCars() -> [CarDetails] {
         if let cars = cars {
             return cars
@@ -19,7 +23,7 @@ final class GuidomiaFormatter {
     }
     
     private func loadFromJson() -> [CarDetails] {
-        guard let cars = JsonDecodingFromFile.loadJson(fileName: "car_list")
+        guard let cars: [CarDetails] = JsonDecodingFromFile.loadJson(fileName: "car_list")
         else {
             preconditionFailure("Unable to read from Json File")
         }

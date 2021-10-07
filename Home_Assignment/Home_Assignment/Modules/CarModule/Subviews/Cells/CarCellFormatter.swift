@@ -24,8 +24,11 @@ class CarCellFormatter {
         static let Roadster_Modal = "Roadster"
         static let BMW_Modal = "3300i"
         static let GLE_coupe_Modal = "GLE coupe"
-        static let proText = " Pros: \n"
-        static let consText = " Cons: \n"
+        static let proText = " Pros : \n"
+        static let consText = " Cons : \n"
+        static let carPrice = "Price : "
+        static let starSpacing = 6
+        static let newLine = " \n "
     }
     
      class func getCarPrice(price: Double?) -> String {
@@ -36,7 +39,7 @@ class CarCellFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.locale = .current
-        return formatter.string(from: priceAsNumber) ?? Constant.notAvaialble
+        return Constant.carPrice + (formatter.string(from: priceAsNumber) ?? Constant.notAvaialble)
     }
     
     class func prosCons(pros: [String]?, cons: [String]?) -> NSAttributedString? {
@@ -45,12 +48,16 @@ class CarCellFormatter {
         if let pros = pros?.compactMap({ $0.count > 0 ? $0 : nil }),
            !pros.isEmpty {
             result.append(prosConsString(for: Constant.proText))
-            result.append(String.add(bulletList: pros, font: UIFont.bold))
+            result.append(String.addBullet(List: pros, font: UIFont.bold))
         }
         if  let cons = cons?.compactMap({$0.count > 0 ? $0 : nil}),
             !cons.isEmpty {
-            result.append(prosConsString(for: Constant.consText))
-            result.append(String.add(bulletList: cons, font: UIFont.bold))
+            var consText = Constant.consText
+            if result.length > 0 {
+                consText = Constant.newLine + consText
+            }
+            result.append(prosConsString(for: consText))
+            result.append(String.addBullet(List: cons, font: UIFont.bold))
         }
         return result
     }
@@ -90,15 +97,15 @@ class CarCellFormatter {
         }
         return carImage ?? Constant.placeholderImage
     }
-    
-    class func star(rating: Int?) -> String {
+    //TODO: To add space in stars
+    class func star(rating: Int?) -> NSAttributedString {
         guard let rating = rating else {
-            return Constant.ratingNotAvaialble
+            return NSAttributedString(string: Constant.ratingNotAvaialble)
         }
         var starString = ""
         for item in 1...5 {
             starString.append(item <= rating ? "★" : "☆")
         }
-        return starString
+        return NSAttributedString(string: starString, attributes: [.kern: Constant.starSpacing])
     }
 }

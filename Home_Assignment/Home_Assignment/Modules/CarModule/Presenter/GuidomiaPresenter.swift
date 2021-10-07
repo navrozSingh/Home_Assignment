@@ -49,7 +49,6 @@ class GuidomiaPresenter: GuidomiaPresenterRequirements {
     }
 
     func applyFilter(for filter: Filter) {
-        
         switch filter {
             case .make(name: _):
                 appliedFilter[Constant.make] = filter
@@ -68,7 +67,7 @@ class GuidomiaPresenter: GuidomiaPresenterRequirements {
         !appliedFilter.keys.isEmpty
     }
     
-    func carsForFilter() -> [CarDetails] {
+    func carsForPicker() -> [CarDetails] {
          formatter.getCars()
     }
 
@@ -92,22 +91,4 @@ class GuidomiaPresenter: GuidomiaPresenterRequirements {
         display?.setMakeTextField(text: makeName)
         display?.setModelTextField(text: modelName)
     }
-}
-
-
-protocol GuidomiaPresenterRequirements {
-    var indexToOpen: Int? { get set }
-    func displayAllCars()
-    func getCarsForAppliedFilter() -> [CarDetails]
-    func carsForFilter() -> [CarDetails]
-    func applyFilter(for: Filter)
-    func resetFilters()
-    func isFilterAppled() -> Bool
-    //Used on Cancel
-    func setExistingFilters()
-}
-
-enum Filter {
-    case make(name: String)
-    case model(name: String)
 }

@@ -10,7 +10,7 @@ import UIKit
 
 extension String {
     
-    static func add(bulletList strings: [String],
+    static func addBullet(List strings: [String],
                    font: UIFont,
                    indentation: CGFloat = 15,
                    lineSpacing: CGFloat = 2,
@@ -19,12 +19,15 @@ extension String {
                    bulletColor: UIColor = .orange) -> NSAttributedString {
         
         func createParagraphAttirbute() -> NSParagraphStyle {
-            var paragraphStyle: NSMutableParagraphStyle
-            let nonOptions = NSDictionary() as! [NSTextTab.OptionKey: Any]
             
-            paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
-            paragraphStyle.tabStops = [
-                NSTextTab(textAlignment: .left, location: indentation, options: nonOptions)]
+            guard let paragraphStyle: NSMutableParagraphStyle = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle,
+                let nonOptions = NSDictionary() as? [NSTextTab.OptionKey: Any]
+            else {
+                return NSParagraphStyle()
+            }
+            
+            paragraphStyle.tabStops = [ NSTextTab(textAlignment: .left,
+                                                  location: indentation, options: nonOptions)]
             paragraphStyle.defaultTabInterval = indentation
             paragraphStyle.firstLineHeadIndent = 0
             paragraphStyle.lineSpacing = lineSpacing

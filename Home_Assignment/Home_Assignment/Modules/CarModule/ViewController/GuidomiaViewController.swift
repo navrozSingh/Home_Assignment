@@ -7,14 +7,9 @@
 
 import UIKit
 
-protocol GuidomiaDisplay {
-    func loadCell(with modals: [CarDetails])
-    func setMakeTextField(text: String?)
-    func setModelTextField(text: String?)
-}
-
-final class GuidomiaViewController: UIViewController {
+final class GuidomiaViewController: BaseViewControllerForNavigation {
     
+    // MARK: Private class variables
     private struct Constant {
         static let headerFrame = CGRect(x: 0,
                                  y: 0,
@@ -71,8 +66,8 @@ final class GuidomiaViewController: UIViewController {
         return textField
     }()
     
-    private lazy var tableHeader: CarCellheader = {
-        let header = CarCellheader(frame: Constant.headerFrame)
+    private lazy var tableHeader: CarCellHeader = {
+        let header = CarCellHeader(frame: Constant.headerFrame)
         header.addTextFieldsToStacks(makeTextField: makeTextField, modelTextField: modelTextField)
         header.resetFilter.addAction { [weak self] in
             self?.presenter?.resetFilters()
@@ -81,6 +76,7 @@ final class GuidomiaViewController: UIViewController {
         return header
     }()
 
+    // MARK: View Controller life cycle
     override func loadView() {
         self.view = tableView
     }
@@ -90,7 +86,7 @@ final class GuidomiaViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupTableView()
         presenter = GuidomiaPresenter(display: self)
-        navigationBarCustomization()
+        super.navigationBarCustomization(title: Constant.title)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,6 +94,7 @@ final class GuidomiaViewController: UIViewController {
     }
 }
 
+// MARK: An extension to setup views
 private extension GuidomiaViewController {
         
     func setupTableView() {
@@ -105,13 +102,9 @@ private extension GuidomiaViewController {
         tableView.delegate = self
         tableView.tableHeaderView = tableHeader
     }
-    
-    func navigationBarCustomization() {
-        navigationController?.addCustomColorToNavigationBar(color: .orange)
-        navigationItem.titleView = navigationController?.leftAlignedTitle(title: Constant.title)
-    }
 }
 
+// MARK: Abstract display
 extension GuidomiaViewController: GuidomiaDisplay {
     func loadCell(with modals: [CarDetails]) {
         carDetails = modals
@@ -126,6 +119,7 @@ extension GuidomiaViewController: GuidomiaDisplay {
     }
 }
 
+// MARK: TableView DataSource
 extension GuidomiaViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -141,6 +135,8 @@ extension GuidomiaViewController: UITableViewDataSource {
         return cell
     }
 }
+
+// MARK: TableView Delegate
 extension GuidomiaViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -148,7 +144,8 @@ extension GuidomiaViewController: UITableViewDelegate {
     }
 }
 
-extension GuidomiaViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+// MARK: UIPicker DataSource
+extension GuidomiaViewController: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
@@ -161,6 +158,10 @@ extension GuidomiaViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return showingModelPicker ? pickerDataSource?[row].model ?? ""  : pickerDataSource?[row].make ?? ""
     }
+}
+
+// MARK: UIPicker Delegate
+extension GuidomiaViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if showingModelPicker {
@@ -171,23 +172,24 @@ extension GuidomiaViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
+// MARK: TextField Delegate
 extension GuidomiaViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         showingModelPicker = textField == modelTextField ? true : false
-        pickerDataSource = presenter?.carsForFilter()
+        pickerDataSource = presenter?.carsForPicker()
         textFieldsPicker.reloadAllComponents()
         return true
     }
 }
 
+// MARK: Toolbar Delegate to handle done or cancel
 extension GuidomiaViewController: ToolbarPickerViewDelegate {
     func didTapDone() {
         defer {
             view.endEditing(true)
             tableHeader.showFilterButton(true)
         }
-        
         showingModelPicker ? presenter?.applyFilter(for: Filter.model(name: modelTextField.string)) : presenter?.applyFilter(for: Filter.make(name: makeTextField.string))
     }
     

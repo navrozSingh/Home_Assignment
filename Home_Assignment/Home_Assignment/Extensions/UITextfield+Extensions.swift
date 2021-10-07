@@ -15,6 +15,7 @@ extension UITextField {
                                 cornerRadius: CGFloat = 8.0) -> UITextField {
         
         let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = backgroundColor
         textField.placeholder = placeholder
         let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0,

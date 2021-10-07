@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		0345A337270F071700F5CFA1 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A336270F071700F5CFA1 /* UIView+Extensions.swift */; };
 		0345A33C270F0D9800F5CFA1 /* GlobalConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A33B270F0D9800F5CFA1 /* GlobalConstant.swift */; };
-		034E0DB5270D6DDF00A9687F /* CarCellheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DB4270D6DDF00A9687F /* CarCellheader.swift */; };
+		0345A342270F1EAE00F5CFA1 /* GuidomiaPresenterRequirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A341270F1EAE00F5CFA1 /* GuidomiaPresenterRequirements.swift */; };
+		0345A348270F1ED700F5CFA1 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A347270F1ED700F5CFA1 /* Filter.swift */; };
+		0345A350270F453E00F5CFA1 /* GuidomiaDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A34F270F453E00F5CFA1 /* GuidomiaDisplay.swift */; };
+		0345A368270F74E100F5CFA1 /* BaseViewControllerForNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A367270F74E100F5CFA1 /* BaseViewControllerForNavigation.swift */; };
+		034E0DB5270D6DDF00A9687F /* CarCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DB4270D6DDF00A9687F /* CarCellHeader.swift */; };
 		034E0DBD270D8E5000A9687F /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */; };
 		034E0DC3270DD02400A9687F /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DC2270DD02400A9687F /* UIFont+Extensions.swift */; };
 		034E0DCB270DE9B900A9687F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DCA270DE9B800A9687F /* String+Extensions.swift */; };
@@ -20,7 +24,6 @@
 		03752B8F270CA6000056FA6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752B8E270CA6000056FA6D /* SceneDelegate.swift */; };
 		03752B99270CA60A0056FA6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03752B97270CA60A0056FA6D /* LaunchScreen.storyboard */; };
 		03752BA4270CA60A0056FA6D /* Home_AssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BA3270CA60A0056FA6D /* Home_AssignmentTests.swift */; };
-		03752BAF270CA60A0056FA6D /* Home_AssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BAE270CA60A0056FA6D /* Home_AssignmentUITests.swift */; };
 		03752BF1270CE4DC0056FA6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03752BD9270CE4DC0056FA6D /* Assets.xcassets */; };
 		03752BF2270CE4DC0056FA6D /* car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 03752BDB270CE4DC0056FA6D /* car_list.json */; };
 		03752BF3270CE4DC0056FA6D /* GuidomiaFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BDF270CE4DC0056FA6D /* GuidomiaFormatter.swift */; };
@@ -54,7 +57,11 @@
 /* Begin PBXFileReference section */
 		0345A336270F071700F5CFA1 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		0345A33B270F0D9800F5CFA1 /* GlobalConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstant.swift; sourceTree = "<group>"; };
-		034E0DB4270D6DDF00A9687F /* CarCellheader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCellheader.swift; sourceTree = "<group>"; };
+		0345A341270F1EAE00F5CFA1 /* GuidomiaPresenterRequirements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidomiaPresenterRequirements.swift; sourceTree = "<group>"; };
+		0345A347270F1ED700F5CFA1 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		0345A34F270F453E00F5CFA1 /* GuidomiaDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidomiaDisplay.swift; sourceTree = "<group>"; };
+		0345A367270F74E100F5CFA1 /* BaseViewControllerForNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerForNavigation.swift; sourceTree = "<group>"; };
+		034E0DB4270D6DDF00A9687F /* CarCellHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCellHeader.swift; sourceTree = "<group>"; };
 		034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		034E0DC2270DD02400A9687F /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		034E0DCA270DE9B800A9687F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -70,8 +77,6 @@
 		03752BA3270CA60A0056FA6D /* Home_AssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_AssignmentTests.swift; sourceTree = "<group>"; };
 		03752BA5270CA60A0056FA6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03752BAA270CA60A0056FA6D /* Home_AssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Home_AssignmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		03752BAE270CA60A0056FA6D /* Home_AssignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_AssignmentUITests.swift; sourceTree = "<group>"; };
-		03752BB0270CA60A0056FA6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03752BD9270CE4DC0056FA6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03752BDB270CE4DC0056FA6D /* car_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = car_list.json; sourceTree = "<group>"; };
 		03752BDF270CE4DC0056FA6D /* GuidomiaFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidomiaFormatter.swift; sourceTree = "<group>"; };
@@ -110,10 +115,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0345A340270F1E8E00F5CFA1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0345A341270F1EAE00F5CFA1 /* GuidomiaPresenterRequirements.swift */,
+				0345A34F270F453E00F5CFA1 /* GuidomiaDisplay.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		0345A346270F1EC400F5CFA1 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				0345A347270F1ED700F5CFA1 /* Filter.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		034E0DB3270D6DDF00A9687F /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				034E0DB4270D6DDF00A9687F /* CarCellheader.swift */,
+				034E0DB4270D6DDF00A9687F /* CarCellHeader.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -123,7 +145,6 @@
 			children = (
 				03752B8B270CA6000056FA6D /* Home_Assignment */,
 				03752BA2270CA60A0056FA6D /* Home_AssignmentTests */,
-				03752BAD270CA60A0056FA6D /* Home_AssignmentUITests */,
 				03752B8A270CA6000056FA6D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -162,15 +183,6 @@
 			path = Home_AssignmentTests;
 			sourceTree = "<group>";
 		};
-		03752BAD270CA60A0056FA6D /* Home_AssignmentUITests */ = {
-			isa = PBXGroup;
-			children = (
-				03752BAE270CA60A0056FA6D /* Home_AssignmentUITests.swift */,
-				03752BB0270CA60A0056FA6D /* Info.plist */,
-			);
-			path = Home_AssignmentUITests;
-			sourceTree = "<group>";
-		};
 		03752BD8270CE4DC0056FA6D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,9 +211,11 @@
 		03752BDD270CE4DC0056FA6D /* CarModule */ = {
 			isa = PBXGroup;
 			children = (
+				0345A346270F1EC400F5CFA1 /* Enums */,
+				0345A340270F1E8E00F5CFA1 /* Protocols */,
 				03752BDE270CE4DC0056FA6D /* Presenter */,
 				03752BE1270CE4DC0056FA6D /* Subviews */,
-				03752BE7270CE4DC0056FA6D /* Modal */,
+				03752BE7270CE4DC0056FA6D /* Model */,
 				03752BE9270CE4DC0056FA6D /* ViewController */,
 			);
 			path = CarModule;
@@ -234,18 +248,19 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		03752BE7270CE4DC0056FA6D /* Modal */ = {
+		03752BE7270CE4DC0056FA6D /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				03752BE8270CE4DC0056FA6D /* CarDetails.swift */,
 			);
-			path = Modal;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		03752BE9270CE4DC0056FA6D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				03752BEA270CE4DC0056FA6D /* GuidomiaViewController.swift */,
+				0345A367270F74E100F5CFA1 /* BaseViewControllerForNavigation.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -414,17 +429,21 @@
 				0345A33C270F0D9800F5CFA1 /* GlobalConstant.swift in Sources */,
 				03752BFE270CE4DC0056FA6D /* UILabel+Extensions.swift in Sources */,
 				034E0DDA270E0F2A00A9687F /* UIControl+Extensions.swift in Sources */,
+				0345A368270F74E100F5CFA1 /* BaseViewControllerForNavigation.swift in Sources */,
 				03752BF3270CE4DC0056FA6D /* GuidomiaFormatter.swift in Sources */,
 				03752BF8270CE4DC0056FA6D /* CarCellFormatter.swift in Sources */,
+				0345A350270F453E00F5CFA1 /* GuidomiaDisplay.swift in Sources */,
 				03752BF5270CE4DC0056FA6D /* CarCell.swift in Sources */,
 				03752B8F270CA6000056FA6D /* SceneDelegate.swift in Sources */,
+				0345A348270F1ED700F5CFA1 /* Filter.swift in Sources */,
 				0345A337270F071700F5CFA1 /* UIView+Extensions.swift in Sources */,
 				034E0DBD270D8E5000A9687F /* NavigationController+Extensions.swift in Sources */,
 				03752BF9270CE4DC0056FA6D /* CarDetails.swift in Sources */,
 				034E0DCB270DE9B900A9687F /* String+Extensions.swift in Sources */,
+				0345A342270F1EAE00F5CFA1 /* GuidomiaPresenterRequirements.swift in Sources */,
 				03752BFA270CE4DC0056FA6D /* GuidomiaViewController.swift in Sources */,
 				03752BFD270CE4DC0056FA6D /* Color+Extensions.swift in Sources */,
-				034E0DB5270D6DDF00A9687F /* CarCellheader.swift in Sources */,
+				034E0DB5270D6DDF00A9687F /* CarCellHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +459,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03752BAF270CA60A0056FA6D /* Home_AssignmentUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
