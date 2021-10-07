@@ -12,33 +12,33 @@ final class CarCell: UITableViewCell {
     
     private struct Constant {
         static let padding: CGFloat = 16
+        static let labelHeight: CGFloat = 32
         static let imageHeight: CGFloat = 100
         static let imageWidth: CGFloat = 140
         static let carDetailStackHeight: CGFloat = 150
         static let defaultHeightProsConsHeight: CGFloat = 0
     }
     
-    private lazy var horizontalCarDetailsStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.spacing = Constant.padding
-        stackView.addArrangedSubview(carImage)
-        stackView.addArrangedSubview(verticalCarDetailsStack)
-        return stackView
-    }()
+//    private lazy var horizontalCarDetailsStack: UIStackView = {
+//        let stackView = UIStackView()
+//        stackView.translatesAutoresizingMaskIntoConstraints = false
+//        stackView.axis = .horizontal
+//        stackView.alignment = .fill
+//        stackView.distribution = .fillEqually
+//        stackView.spacing = Constant.padding
+//        stackView.addArrangedSubview(carImage)
+//        stackView.addArrangedSubview(verticalCarDetailsStack)
+//        return stackView
+//    }()
     
-    private lazy var verticalCarDetailsStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.distribution = .fillEqually
-        stackView.addArrangedSubview(carNamePrice)
-        stackView.addArrangedSubview(starView)
-        return stackView
+    private lazy var carDetailsView: UIView = {
+        let containerView = UIView()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(carImage)
+        containerView.addSubview(carName)
+        containerView.addSubview(carPrice)
+        containerView.addSubview(starLabel)
+        return containerView
     }()
     
     private lazy var mainStackView: UIStackView = {
@@ -47,7 +47,8 @@ final class CarCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill
-        stackView.addArrangedSubview(horizontalCarDetailsStack)
+        stackView.contentMode = .scaleAspectFit
+        stackView.addArrangedSubview(carDetailsView)
         stackView.addArrangedSubview(prosConsTextView)
         return stackView
     }()
@@ -82,19 +83,15 @@ final class CarCell: UITableViewCell {
         
         return separatorView
     }()
-    
-    private lazy var prosConsTextViewHeight = prosConsTextView.heightAnchor.constraint(equalToConstant: Constant.defaultHeightProsConsHeight)
-    
-    // Used one label to match UI
-    private lazy var carNamePrice: UILabel = {
-        let label = UILabel.createLabel(numberOfLines: 0)
-//        label.heightAnchor.constraint(lessThanOrEqualToConstant: 120).isActive = true
-//        constraint.isActive = true
-//        constraint.priority = .defaultLow
+        
+    private lazy var carName: UILabel = {
+        let label = UILabel.createLabel(numberOfLines: 0,font: UIFont.bold, color: UIColor.darkGray)
         return label
     }()
     
-    private lazy var starView = UILabel.createLabel(font: UIFont.bold, color: UIColor.orange)
+    private lazy var carPrice = UILabel.createLabel(numberOfLines: 0,font: UIFont.semiBold, color: UIColor.darkGray)
+
+    private lazy var starLabel = UILabel.createLabel(font: UIFont.semiBold, color: UIColor.orange)
     
     private let carImage: UIImageView = {
         let imageView = UIImageView()
@@ -107,22 +104,25 @@ final class CarCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        
         setupSeparatorView()
+        setupCarDetailsView()
         setupCarDetailStack()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupSeparatorView()
+        setupCarDetailsView()
         setupCarDetailStack()
     }
 
     func configureCell(with modal: CarDetails?, showProsCons: Bool = false) {
         self.contentView.backgroundColor = UIColor.lightGray
-        carNamePrice.attributedText = CarCellFormatter.carNameAndPrice(modal: modal)
+        carName.text = CarCellFormatter.carName(from: modal)
+        carPrice.text = CarCellFormatter.getCarPrice(price: modal?.customerPrice)
         carImage.image = CarCellFormatter.imageMapper(modal: modal?.model)
-        starView.text = CarCellFormatter.star(rating: modal?.rating)
+        starLabel.text = CarCellFormatter.star(rating: modal?.rating)
+
         if showProsCons,
            let points = CarCellFormatter.prosCons(pros: modal?.prosList, cons: modal?.consList) {
             prosConsTextView.isHidden = false
@@ -143,6 +143,32 @@ private extension CarCell {
             mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
                                                 constant: -Constant.padding),
             mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -(Constant.padding*2))
+        ])
+    }
+    
+    func setupCarDetailsView() {
+        NSLayoutConstraint.activate([
+            //carDetailsView
+            carImage.topAnchor.constraint(equalTo: carDetailsView.topAnchor),
+            carImage.leadingAnchor.constraint(equalTo: carDetailsView.leadingAnchor),
+            carImage.widthAnchor.constraint(equalToConstant: Constant.imageWidth),
+            carImage.heightAnchor.constraint(equalToConstant: Constant.imageHeight),
+            
+            carName.topAnchor.constraint(equalTo: carDetailsView.topAnchor, constant: Constant.padding/2),
+            carName.leadingAnchor.constraint(equalTo: carImage.trailingAnchor, constant: Constant.padding/2),
+            carName.trailingAnchor.constraint(equalTo: carDetailsView.trailingAnchor),
+
+            carPrice.topAnchor.constraint(equalTo: carName.bottomAnchor),
+            carPrice.leadingAnchor.constraint(equalTo: carImage.trailingAnchor, constant: Constant.padding),
+            carPrice.trailingAnchor.constraint(equalTo: carDetailsView.trailingAnchor),
+            carPrice.heightAnchor.constraint(equalToConstant: Constant.labelHeight),
+
+            starLabel.topAnchor.constraint(equalTo: carPrice.bottomAnchor),
+            starLabel.leadingAnchor.constraint(equalTo: carImage.trailingAnchor, constant: Constant.padding),
+            starLabel.trailingAnchor.constraint(equalTo: carDetailsView.trailingAnchor),
+            starLabel.heightAnchor.constraint(equalToConstant: Constant.labelHeight),
+            starLabel.bottomAnchor.constraint(equalTo: carDetailsView.bottomAnchor)
+
         ])
     }
     

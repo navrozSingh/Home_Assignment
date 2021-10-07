@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol GuidomiaDisplay {
+    func loadCell(with modals: [CarDetails])
+}
+
 final class GuidomiaViewController: UIViewController {
     
     private struct Constant {
@@ -16,14 +20,15 @@ final class GuidomiaViewController: UIViewController {
                                  height: UIScreen.main.bounds.height / 2)
         static let anyMakePlaceholder = "Any make"
         static let anyModelPlaceholder = "Any model"
-        static let title = "Guidomia"
-
+        static let title = "GUIDOMIA"
+        static let selected = " (Selected)"
+        static let cellID = "CarCell"
     }
-    
+        
     private let tableView : UITableView = {
         let table = UITableView()
         table.separatorStyle = .none
-        table.register(CarCell.self, forCellReuseIdentifier: "CarCell")
+        table.register(CarCell.self, forCellReuseIdentifier: Constant.cellID)
         return table
     }()
     
@@ -52,6 +57,7 @@ final class GuidomiaViewController: UIViewController {
         textField.inputView = textFieldsPicker
         textField.inputAccessoryView = textFieldsPicker.toolbar
         textField.delegate = self
+        textField.addShadow(ofColor: .bulletPointColor)
         return textField
     }()
     
@@ -60,6 +66,7 @@ final class GuidomiaViewController: UIViewController {
         textField.inputView = textFieldsPicker
         textField.inputAccessoryView = textFieldsPicker.toolbar
         textField.delegate = self
+        textField.addShadow(ofColor: .bulletPointColor)
         return textField
     }()
     
@@ -77,7 +84,7 @@ final class GuidomiaViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupTableView()
-        setupPresenter()
+        presenter = GuidomiaPresenter(display: self)
         navigationBarCustomization()
     }
     
@@ -87,11 +94,7 @@ final class GuidomiaViewController: UIViewController {
 }
 
 private extension GuidomiaViewController {
-    
-    func setupPresenter() {
-        presenter = GuidomiaPresenter(display: self)
-    }
-    
+        
     func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -110,30 +113,30 @@ extension GuidomiaViewController: GuidomiaDisplay {
     }
 }
 
-extension GuidomiaViewController: UITableViewDataSource, UITableViewDelegate {
+extension GuidomiaViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return carDetails?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CarCell") as? CarCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.cellID) as? CarCell else {
             preconditionFailure("cell configuration issue")
         }
         cell.configureCell(with: carDetails?[indexPath.row],
                            showProsCons: presenter?.indexToOpen ?? 0 == indexPath.row)
         return cell
     }
+}
+extension GuidomiaViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.indexToOpen = indexPath.row
     }
 }
 
-protocol GuidomiaDisplay {
-    func loadCell(with modals: [CarDetails])
-}
-
 extension GuidomiaViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
@@ -143,7 +146,11 @@ extension GuidomiaViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        showingModelPicker ? pickerDataSource?[row].model ?? ""  : pickerDataSource?[row].make ?? ""
+        var title = showingModelPicker ? pickerDataSource?[row].model ?? ""  : pickerDataSource?[row].make ?? ""
+        if pickerDataSource?[row].filteredApplied ?? false {
+            title = title + Constant.selected
+        }
+        return title
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -156,9 +163,10 @@ extension GuidomiaViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 }
 
 extension GuidomiaViewController: UITextFieldDelegate {
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         showingModelPicker = textField == modelTextField ? true : false
-        pickerDataSource = presenter?.getCarsForAppliedFilter()
+        pickerDataSource = presenter?.modelDataSource()
         textFieldsPicker.reloadAllComponents()
         return true
     }
@@ -171,13 +179,10 @@ extension GuidomiaViewController: ToolbarPickerViewDelegate {
         }
         if showingModelPicker,
            !modelTextField.string.isEmpty {
-            modelTextField.addButton()
-            
             presenter?.applyFilter(for: Filter.model(name: modelTextField.string))
             
         } else if !showingModelPicker,
                   !makeTextField.string.isEmpty {
-            makeTextField.addButton()
 
             presenter?.applyFilter(for: Filter.make(name: makeTextField.string))
         }

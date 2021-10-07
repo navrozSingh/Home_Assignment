@@ -9,12 +9,13 @@ import Foundation
 
 struct CarDetails : Codable {
 //    private(set) var id: String? = NSUUID().uuidString
-    let consList : [String]?
-    let customerPrice : Double?
-    let make : String?
-    let marketPrice : Double?
-    let model : String?
-    let prosList : [String]?
-    let rating : Int?
+    let consList: [String]?
+    let customerPrice: Double?
+    let make: String?
+    let marketPrice: Double?
+    let model: String?
+    let prosList: [String]?
+    let rating: Int?
+    var filteredApplied: Bool? = false
 }
 

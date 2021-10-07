@@ -24,10 +24,11 @@ class CarCellFormatter {
         static let Roadster_Modal = "Roadster"
         static let BMW_Modal = "3300i"
         static let GLE_coupe_Modal = "GLE coupe"
-
+        static let proText = " Pros: \n"
+        static let consText = " Cons: \n"
     }
     
-    private class func getCarPrice(price: Double?) -> String {
+     class func getCarPrice(price: Double?) -> String {
         guard let price = price else {
             return Constant.notAvaialble
         }
@@ -43,12 +44,12 @@ class CarCellFormatter {
         
         if let pros = pros?.compactMap({ $0.count > 0 ? $0 : nil }),
            !pros.isEmpty {
-            result.append(prosConsString(for: "Pros: \n"))
+            result.append(prosConsString(for: Constant.proText))
             result.append(String.add(bulletList: pros, font: UIFont.bold))
         }
         if  let cons = cons?.compactMap({$0.count > 0 ? $0 : nil}),
             !cons.isEmpty {
-            result.append(prosConsString(for: "Cons: \n"))
+            result.append(prosConsString(for: Constant.consText))
             result.append(String.add(bulletList: cons, font: UIFont.bold))
         }
         return result
@@ -59,31 +60,17 @@ class CarCellFormatter {
         let string: NSString = NSString(string: prosConsString)
         let range: NSRange = string.range(of: prosConsString)
         let textAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.bold, .foregroundColor: UIColor.darkGray]
-
         attributedString.addAttributes(textAttributes, range: range)
         return attributedString
     }
     
-    private class func carName(from modal: CarDetails?) -> String {
+     class func carName(from modal: CarDetails?) -> String {
         guard let modal = modal else {
             return Constant.notAvaialble
         }
-        return (modal.make ?? "") + " " + (modal.model ?? "") + "\n"
+        return (modal.make ?? "") + " " + (modal.model ?? "")
     }
-    
-    class func carNameAndPrice(modal: CarDetails?) -> NSAttributedString {
-        let nameAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.bold, .foregroundColor: UIColor.darkGray]
-
-        let priceAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.semiBold, .foregroundColor: UIColor.darkGray]
-         
-        let name = NSMutableAttributedString(string: carName(from: modal),
-                                      attributes: nameAttributes)
-        let price = NSAttributedString(string: getCarPrice(price: modal?.customerPrice),
-                                       attributes: priceAttributes)
-        name.append(price)
-        return name 
-    }
-    
+        
     class func imageMapper(modal: String?) -> UIImage {
         guard let modal = modal else {
             return Constant.placeholderImage

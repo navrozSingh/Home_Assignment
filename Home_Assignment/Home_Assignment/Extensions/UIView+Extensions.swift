@@ -6,18 +6,18 @@
 //
 
 import UIKit
+
 extension UIView {
     
-    func addWHConstraint(width: CGFloat?,
-                         height: CGFloat?) {
-        translatesAutoresizingMaskIntoConstraints = false
-        if let width = width {
-            widthAnchor.constraint(equalToConstant: width).isActive = true
-        }
-        if let height = height {
-            heightAnchor.constraint(equalToConstant: height).isActive = true
-        }
+    func addShadow(
+        ofColor color: UIColor = .darkGray,
+        radius: CGFloat = 3,
+        offset: CGSize = .zero,
+        opacity: Float = 0.5) {
+        layer.shadowColor = color.cgColor
+        layer.shadowOffset = offset
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
+        layer.masksToBounds = false
     }
-    
 }
-

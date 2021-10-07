@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0345A337270F071700F5CFA1 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A336270F071700F5CFA1 /* UIView+Extensions.swift */; };
 		034E0DB5270D6DDF00A9687F /* CarCellheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DB4270D6DDF00A9687F /* CarCellheader.swift */; };
 		034E0DBD270D8E5000A9687F /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */; };
 		034E0DC3270DD02400A9687F /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DC2270DD02400A9687F /* UIFont+Extensions.swift */; };
@@ -24,13 +25,10 @@
 		03752BF3270CE4DC0056FA6D /* GuidomiaFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BDF270CE4DC0056FA6D /* GuidomiaFormatter.swift */; };
 		03752BF4270CE4DC0056FA6D /* GuidomiaPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BE0270CE4DC0056FA6D /* GuidomiaPresenter.swift */; };
 		03752BF5270CE4DC0056FA6D /* CarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BE3270CE4DC0056FA6D /* CarCell.swift */; };
-		03752BF6270CE4DC0056FA6D /* CarCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BE4270CE4DC0056FA6D /* CarCell2.swift */; };
-		03752BF7270CE4DC0056FA6D /* CarCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03752BE5270CE4DC0056FA6D /* CarCell2.xib */; };
 		03752BF8270CE4DC0056FA6D /* CarCellFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BE6270CE4DC0056FA6D /* CarCellFormatter.swift */; };
 		03752BF9270CE4DC0056FA6D /* CarDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BE8270CE4DC0056FA6D /* CarDetails.swift */; };
 		03752BFA270CE4DC0056FA6D /* GuidomiaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BEA270CE4DC0056FA6D /* GuidomiaViewController.swift */; };
 		03752BFB270CE4DC0056FA6D /* JsonDecodingFromFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BEC270CE4DC0056FA6D /* JsonDecodingFromFile.swift */; };
-		03752BFC270CE4DC0056FA6D /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BEE270CE4DC0056FA6D /* UIView+Extensions.swift */; };
 		03752BFD270CE4DC0056FA6D /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BEF270CE4DC0056FA6D /* Color+Extensions.swift */; };
 		03752BFE270CE4DC0056FA6D /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BF0270CE4DC0056FA6D /* UILabel+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0345A336270F071700F5CFA1 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		034E0DB4270D6DDF00A9687F /* CarCellheader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCellheader.swift; sourceTree = "<group>"; };
 		034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		034E0DC2270DD02400A9687F /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
@@ -76,13 +75,10 @@
 		03752BDF270CE4DC0056FA6D /* GuidomiaFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidomiaFormatter.swift; sourceTree = "<group>"; };
 		03752BE0270CE4DC0056FA6D /* GuidomiaPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidomiaPresenter.swift; sourceTree = "<group>"; };
 		03752BE3270CE4DC0056FA6D /* CarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCell.swift; sourceTree = "<group>"; };
-		03752BE4270CE4DC0056FA6D /* CarCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCell2.swift; sourceTree = "<group>"; };
-		03752BE5270CE4DC0056FA6D /* CarCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarCell2.xib; sourceTree = "<group>"; };
 		03752BE6270CE4DC0056FA6D /* CarCellFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCellFormatter.swift; sourceTree = "<group>"; };
 		03752BE8270CE4DC0056FA6D /* CarDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDetails.swift; sourceTree = "<group>"; };
 		03752BEA270CE4DC0056FA6D /* GuidomiaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidomiaViewController.swift; sourceTree = "<group>"; };
 		03752BEC270CE4DC0056FA6D /* JsonDecodingFromFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonDecodingFromFile.swift; sourceTree = "<group>"; };
-		03752BEE270CE4DC0056FA6D /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		03752BEF270CE4DC0056FA6D /* Color+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		03752BF0270CE4DC0056FA6D /* UILabel+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,8 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				03752BE3270CE4DC0056FA6D /* CarCell.swift */,
-				03752BE4270CE4DC0056FA6D /* CarCell2.swift */,
-				03752BE5270CE4DC0056FA6D /* CarCell2.xib */,
 				03752BE6270CE4DC0056FA6D /* CarCellFormatter.swift */,
 			);
 			path = Cells;
@@ -266,7 +260,6 @@
 		03752BED270CE4DC0056FA6D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				03752BEE270CE4DC0056FA6D /* UIView+Extensions.swift */,
 				03752BEF270CE4DC0056FA6D /* Color+Extensions.swift */,
 				03752BF0270CE4DC0056FA6D /* UILabel+Extensions.swift */,
 				034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */,
@@ -274,6 +267,7 @@
 				034E0DCA270DE9B800A9687F /* String+Extensions.swift */,
 				034E0DCF270DEDDB00A9687F /* UITextfield+Extensions.swift */,
 				034E0DD9270E0F2A00A9687F /* UIControl+Extensions.swift */,
+				0345A336270F071700F5CFA1 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -382,7 +376,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				03752BF1270CE4DC0056FA6D /* Assets.xcassets in Resources */,
-				03752BF7270CE4DC0056FA6D /* CarCell2.xib in Resources */,
 				03752BF2270CE4DC0056FA6D /* car_list.json in Resources */,
 				03752B99270CA60A0056FA6D /* LaunchScreen.storyboard in Resources */,
 			);
@@ -418,15 +411,14 @@
 				03752BFE270CE4DC0056FA6D /* UILabel+Extensions.swift in Sources */,
 				034E0DDA270E0F2A00A9687F /* UIControl+Extensions.swift in Sources */,
 				03752BF3270CE4DC0056FA6D /* GuidomiaFormatter.swift in Sources */,
-				03752BF6270CE4DC0056FA6D /* CarCell2.swift in Sources */,
 				03752BF8270CE4DC0056FA6D /* CarCellFormatter.swift in Sources */,
 				03752BF5270CE4DC0056FA6D /* CarCell.swift in Sources */,
 				03752B8F270CA6000056FA6D /* SceneDelegate.swift in Sources */,
+				0345A337270F071700F5CFA1 /* UIView+Extensions.swift in Sources */,
 				034E0DBD270D8E5000A9687F /* NavigationController+Extensions.swift in Sources */,
 				03752BF9270CE4DC0056FA6D /* CarDetails.swift in Sources */,
 				034E0DCB270DE9B900A9687F /* String+Extensions.swift in Sources */,
 				03752BFA270CE4DC0056FA6D /* GuidomiaViewController.swift in Sources */,
-				03752BFC270CE4DC0056FA6D /* UIView+Extensions.swift in Sources */,
 				03752BFD270CE4DC0056FA6D /* Color+Extensions.swift in Sources */,
 				034E0DB5270D6DDF00A9687F /* CarCellheader.swift in Sources */,
 			);

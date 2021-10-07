@@ -8,15 +8,14 @@
 import Foundation
 import UIKit
 
-//https://stackoverflow.com/questions/6644501/nsattributedstring-inserting-a-bullet-point
 extension String {
     
     static func add(bulletList strings: [String],
                    font: UIFont,
                    indentation: CGFloat = 15,
                    lineSpacing: CGFloat = 2,
-                   paragraphSpacing: CGFloat = 5,
-                   textColor: UIColor = .textColor,
+                   paragraphSpacing: CGFloat = 0,
+                   textColor: UIColor = .bulletPointColor,
                    bulletColor: UIColor = .orange) -> NSAttributedString {
         
         func createParagraphAttirbute() -> NSParagraphStyle {
@@ -34,9 +33,9 @@ extension String {
             return paragraphStyle
         }
         
-        let bulletPoint = "\u{2022}"
+        let bulletPoint = "  \u{2022}"
         let textAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.smallBold, .foregroundColor: textColor]
-        let bulletAttributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: bulletColor]
+        let bulletAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.boldForTitle, .foregroundColor: bulletColor]
         let buffer = NSMutableAttributedString.init()
         
         for string in strings {
@@ -60,9 +59,4 @@ extension String {
         
         return buffer
     }
-    
-    func nextLine() {
-        self + "\n"
-    }
-    
 }

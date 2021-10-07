@@ -14,10 +14,10 @@ extension UINavigationController {
         self.navigationBar.barTintColor = color
     }
     
-    func leftAlignedTitle(title: String, frontPadding: CGFloat = 16) -> UIView {
+    func leftAlignedTitle(title: String, frontPadding: CGFloat = 8) -> UIView {
         let titleLabel = UILabel()
         titleLabel.text = title
-        titleLabel.font = UIFont.boldForTitle
+        titleLabel.font = UIFont.bold
         titleLabel.textColor = .white
         let frontSpacer = UIView()
         let spacer = UIView()

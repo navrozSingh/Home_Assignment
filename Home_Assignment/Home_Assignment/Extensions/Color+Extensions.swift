@@ -7,8 +7,8 @@
 
 import UIKit
 
-
 extension UIColor {
+    
     static let orange = UIColor.hexToUIColor("#FC6016")
     static let darkGray = UIColor.hexToUIColor("#858585")
     static let lightGray = UIColor.hexToUIColor("#D5D5D5")
@@ -17,18 +17,15 @@ extension UIColor {
 }
 
 fileprivate extension UIColor {
-    // https://stackoverflow.com/questions/24263007/how-to-use-hex-color-values
+    
     static func hexToUIColor(_ hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-
         if (cString.hasPrefix("#")) {
             cString.remove(at: cString.startIndex)
         }
-
         if ((cString.count) != 6) {
             return UIColor.gray
         }
-
         var rgbValue:UInt64 = 0
         Scanner(string: cString).scanHexInt64(&rgbValue)
 
