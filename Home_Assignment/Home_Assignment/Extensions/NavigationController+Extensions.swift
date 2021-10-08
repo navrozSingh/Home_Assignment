@@ -15,7 +15,11 @@ extension UINavigationController {
      - Parameter color - to specify desized color
      */
     func addCustomColorToNavigationBar(color: UIColor) {
-        self.navigationBar.barTintColor = color
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = color
+        navigationBar.standardAppearance = appearance;
+        navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
     }
     
     /**
