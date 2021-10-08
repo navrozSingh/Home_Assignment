@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-// https://stackoverflow.com/questions/31728680/how-to-make-an-uipickerview-with-a-done-button
 
 protocol ToolbarPickerViewDelegate: class {
     func didTapDone()

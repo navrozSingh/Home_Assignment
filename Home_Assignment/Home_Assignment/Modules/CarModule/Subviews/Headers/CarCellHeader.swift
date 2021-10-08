@@ -13,7 +13,6 @@ class CarCellHeader: UIView {
     // MARK: - Private class variables
     private enum Constant {
         static let textFieldViewHeight: CGFloat = 150.0
-        static let labelHeight: CGFloat = 32.0
         static let paddingForFilter: CGFloat = 18.0
         static let filterContainerPadding: CGFloat = 16.0
         static let cornerRadius: CGFloat = 8.0

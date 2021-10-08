@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIView {
+
     /**
      - func addShow is used to add shadow to any uiview
      - Parameters color - specify the shadow color
@@ -15,7 +16,6 @@ extension UIView {
      - Parameters offset - specify the offset of the shadow
      - Parameters opacity - specify the opacity of the shadow
      */
-
     func addShadow(
         ofColor color: UIColor = .darkGray,
         radius: CGFloat = 3,

@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 // Global Constants
-
 public struct StringConstants {
     static let carCellID = "CarCell"
 }
