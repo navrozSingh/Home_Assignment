@@ -27,6 +27,8 @@ class CarCellFormatter {
         static let proText = " Pros : \n"
         static let consText = " Cons : \n"
         static let carPrice = "Price : "
+        static let lastFiveChar = "000.0"
+        static let thousand = "K"
         static let starSpacing = 6
         static let newLine = " \n "
     }
@@ -35,11 +37,16 @@ class CarCellFormatter {
         guard let price = price else {
             return Constant.notAvaialble
         }
-        let priceAsNumber = NSNumber(value: price)
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = .current
-        return Constant.carPrice + (formatter.string(from: priceAsNumber) ?? Constant.notAvaialble)
+        let priceString = String(price)
+        guard priceString.count > 5 else {
+            return Constant.carPrice + priceString
+        }
+        let lastSixCharacters = priceString.suffix(5)
+        if lastSixCharacters == Constant.lastFiveChar {
+            return Constant.carPrice + String(priceString.dropLast(5)) + Constant.thousand
+        } else {
+            return Constant.carPrice + priceString
+        }
     }
     
     class func prosCons(pros: [String]?, cons: [String]?) -> NSAttributedString? {
@@ -48,27 +55,19 @@ class CarCellFormatter {
         if let pros = pros?.compactMap({ $0.count > 0 ? $0 : nil }),
            !pros.isEmpty {
             result.append(prosConsString(for: Constant.proText))
-            result.append(String.addBullet(List: pros, font: UIFont.bold))
+            result.append(String.addBullet(List: pros, font: UIFont.semiBold))
         }
         if  let cons = cons?.compactMap({$0.count > 0 ? $0 : nil}),
             !cons.isEmpty {
-            var consText = Constant.consText
-            if result.length > 0 {
-                consText = Constant.newLine + consText
-            }
-            result.append(prosConsString(for: consText))
-            result.append(String.addBullet(List: cons, font: UIFont.bold))
+            result.append(prosConsString(for: Constant.consText))
+            result.append(String.addBullet(List: cons, font: UIFont.semiBold))
         }
         return result
     }
 
-    private class func prosConsString(for prosConsString: String)-> NSAttributedString {
-        let attributedString = NSMutableAttributedString(string: prosConsString)
-        let string: NSString = NSString(string: prosConsString)
-        let range: NSRange = string.range(of: prosConsString)
-        let textAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.bold, .foregroundColor: UIColor.darkGray]
-        attributedString.addAttributes(textAttributes, range: range)
-        return attributedString
+    private class func prosConsString(for prosConsString: String)-> NSAttributedString {        
+        let textAttributes = String.paragraphStyle(textFont: UIFont.bold, textColor: UIColor.darkGray)
+        return NSAttributedString(string: prosConsString, attributes: textAttributes.0)
     }
     
      class func carName(from modal: CarDetails?) -> String {
@@ -97,7 +96,7 @@ class CarCellFormatter {
         }
         return carImage ?? Constant.placeholderImage
     }
-    //TODO: To add space in stars
+
     class func star(rating: Int?) -> NSAttributedString {
         guard let rating = rating else {
             return NSAttributedString(string: Constant.ratingNotAvaialble)

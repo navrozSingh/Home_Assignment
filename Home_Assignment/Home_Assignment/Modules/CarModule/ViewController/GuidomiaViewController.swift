@@ -18,7 +18,6 @@ final class GuidomiaViewController: BaseViewControllerForNavigation {
         static let anyMakePlaceholder = "Any make"
         static let anyModelPlaceholder = "Any model"
         static let title = "GUIDOMIA"
-        static let selected = " (Selected)"
     }
         
     private let tableView : UITableView = {

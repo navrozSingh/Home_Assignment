@@ -14,7 +14,7 @@ extension String {
                    font: UIFont,
                    indentation: CGFloat = 15,
                    lineSpacing: CGFloat = 2,
-                   paragraphSpacing: CGFloat = 0,
+                   paragraphSpacing: CGFloat = 5,
                    textColor: UIColor = .bulletPointColor,
                    bulletColor: UIColor = .orange) -> NSAttributedString {
         
@@ -37,17 +37,17 @@ extension String {
         }
         
         let bulletPoint = "  \u{2022}"
-        let textAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.smallBold, .foregroundColor: textColor]
-        let bulletAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.boldForTitle, .foregroundColor: bulletColor]
+        let textAttributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: textColor]
+        let bulletAttributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: bulletColor]
         let buffer = NSMutableAttributedString.init()
         
         for string in strings {
             let formattedString = "\(bulletPoint)\t\(string)\n"
             let attributedString = NSMutableAttributedString(string: formattedString)
-            let paragraphStyle = createParagraphAttirbute()
+            let paragraphstyle = paragraphStyle(textFont: font).1
             
             attributedString.addAttributes(
-                [NSAttributedString.Key.paragraphStyle : paragraphStyle],
+                [NSAttributedString.Key.paragraphStyle : paragraphstyle],
                 range: NSMakeRange(0, attributedString.length))
             
             attributedString.addAttributes(
@@ -61,5 +61,30 @@ extension String {
         }
         
         return buffer
+    }
+    
+    static func paragraphStyle(textFont: UIFont,
+                             indentation: CGFloat = 15,
+                             lineSpacing: CGFloat = 2,
+                             paragraphSpacing: CGFloat = 5,
+                             textColor: UIColor = .black) -> ([NSAttributedString.Key: Any], NSParagraphStyle) {
+        guard let paragraphStyle: NSMutableParagraphStyle = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle,
+              let nonOptions = NSDictionary() as? [NSTextTab.OptionKey: Any]
+        else {
+            return ([NSAttributedString.Key: Any](), NSParagraphStyle())
+        }
+        
+        paragraphStyle.tabStops = [NSTextTab(textAlignment: .left,
+                                              location: indentation, options: nonOptions)]
+        paragraphStyle.defaultTabInterval = indentation
+        paragraphStyle.firstLineHeadIndent = 0
+        paragraphStyle.lineSpacing = lineSpacing
+        paragraphStyle.paragraphSpacing = paragraphSpacing
+        paragraphStyle.headIndent = indentation
+        return ([
+            .font: textFont,
+            .foregroundColor: textColor,
+            .paragraphStyle: paragraphStyle
+        ], paragraphStyle)
     }
 }

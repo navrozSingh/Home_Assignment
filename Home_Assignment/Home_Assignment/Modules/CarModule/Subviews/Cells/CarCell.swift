@@ -84,7 +84,7 @@ final class CarCell: UITableViewCell {
     
     private let carImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
         return imageView
@@ -138,7 +138,7 @@ private extension CarCell {
     
     func setupCarDetailsView() {
         NSLayoutConstraint.activate([
-            carImage.topAnchor.constraint(equalTo: carDetailsView.topAnchor, constant: Constant.padding/2),
+            carImage.topAnchor.constraint(equalTo: carDetailsView.topAnchor, constant: Constant.padding),
             carImage.leadingAnchor.constraint(equalTo: carDetailsView.leadingAnchor),
             carImage.widthAnchor.constraint(equalToConstant: Constant.imageWidth),
             carImage.heightAnchor.constraint(equalToConstant: Constant.imageHeight),
@@ -161,7 +161,7 @@ private extension CarCell {
             starLabel.trailingAnchor.constraint(equalTo: carDetailsView.trailingAnchor),
             starLabel.heightAnchor.constraint(equalToConstant: Constant.labelHeight),
             starLabel.bottomAnchor.constraint(equalTo: carDetailsView.bottomAnchor,
-                                              constant: -Constant.padding/2)
+                                              constant: -(Constant.padding * 1.5))
 
         ])
     }
