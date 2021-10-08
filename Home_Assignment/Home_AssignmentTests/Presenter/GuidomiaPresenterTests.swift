@@ -19,7 +19,7 @@ class GuidomiaPresenterTests: XCTestCase {
         subject = GuidomiaPresenter(display: display)
     }
     
-    func testSubject() {
+    func testFilterApplied() {
         XCTAssertEqual(subject?.carsForPicker().count, 4)
         XCTAssertEqual(subject?.isFilterAppled(), false)
         subject?.applyFilter(for: Filter.make(name: "test"))

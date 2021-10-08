@@ -12,7 +12,7 @@ final class GuidomiaFormatter {
     private var cars: [CarDetails]?
     
     /**
-     # Function fetch  json from file & cache the records in local variable.
+     - Function fetch  json from file & cache the records in local variable.
      - Returns: `[CarDetails]` .
      */
     func getCars() -> [CarDetails] {
