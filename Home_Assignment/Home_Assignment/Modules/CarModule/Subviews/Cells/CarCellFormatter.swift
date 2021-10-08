@@ -86,7 +86,7 @@ class CarCellFormatter {
      - Parameter prosConsString: String:
      - Returns: An `NSAttributedString` with same styling as bullets
      */
-    private class func prosConsString(for prosConsString: String)-> NSAttributedString {        
+     class func prosConsString(for prosConsString: String)-> NSAttributedString {        
         let textAttributes = NSAttributedString.paragraphStyle(textFont: UIFont.bold, textColor: UIColor.darkGray)
         return NSAttributedString(string: prosConsString, attributes: textAttributes.0)
     }
