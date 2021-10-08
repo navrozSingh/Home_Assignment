@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol GuidomiaDisplay {
+protocol GuidomiaDisplay: AnyObject {
     /**
      - `loadCell(with modals: [CarDetails])` used to reload dataSources.
      - Parameters: `[CarDetails]` object to be passed controller.

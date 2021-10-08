@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol GuidomiaPresenterRequirements {
+protocol GuidomiaPresenterRequirements: AnyObject {
     /**
      - `indexToOpen` used to manage opening and closing cells.
      - default is nil

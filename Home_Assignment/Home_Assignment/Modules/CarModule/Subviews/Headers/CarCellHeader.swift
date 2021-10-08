@@ -17,7 +17,7 @@ class CarCellHeader: UIView {
         static let labelHeight: CGFloat = 32.0
         static let paddingForFilter: CGFloat = 16.0
         static let cornerRadius: CGFloat = 8.0
-        static let carImageBottomPadding: CGFloat = -15.0
+        static let carImageBottomPadding: CGFloat = -16.0
         static let tacmoSubLabelBottom: CGFloat = -36.0
         static let tacmoLabelText = "Tacoma 2021"
         static let tacmoSubLabelText = "Get your's now"
