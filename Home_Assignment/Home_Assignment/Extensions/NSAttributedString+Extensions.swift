@@ -21,15 +21,15 @@ extension NSAttributedString {
      */
     static func addBullets(List strings: [String],
                    font: UIFont,
-                   indentation: CGFloat = 15.0,
+                   indentation: CGFloat = 20.0,
                    lineSpacing: CGFloat = 2.0,
                    paragraphSpacing: CGFloat = 5.0,
                    textColor: UIColor = .bulletPointColor,
                    bulletColor: UIColor = .orange) -> NSAttributedString {
         
-        let bulletPoint = "  \u{2022}"
-        let textAttributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: textColor]
-        let bulletAttributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: bulletColor]
+        let bulletPoint = "   \u{2022}"
+        let textAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.smallBold, .foregroundColor: textColor]
+        let bulletAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.bold, .foregroundColor: bulletColor]
         let buffer = NSMutableAttributedString.init()
         
         for string in strings {
@@ -58,7 +58,8 @@ extension NSAttributedString {
                                indentation: CGFloat = 15.0,
                                lineSpacing: CGFloat = 2.0,
                                paragraphSpacing: CGFloat = 5.0,
-                             textColor: UIColor = .textColor) -> ([NSAttributedString.Key: Any], NSParagraphStyle) {
+                               beforeSpacing: CGFloat? = nil,
+                               textColor: UIColor = .textColor) -> ([NSAttributedString.Key: Any], NSParagraphStyle) {
         guard let paragraphStyle: NSMutableParagraphStyle = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle,
               let nonOptions = NSDictionary() as? [NSTextTab.OptionKey: Any]
         else {
@@ -72,6 +73,10 @@ extension NSAttributedString {
         paragraphStyle.lineSpacing = lineSpacing
         paragraphStyle.paragraphSpacing = paragraphSpacing
         paragraphStyle.headIndent = indentation
+        if let beforeSpacing = beforeSpacing {
+            paragraphStyle.paragraphSpacingBefore = beforeSpacing
+
+        }
         return ([
             .font: textFont,
             .foregroundColor: textColor,

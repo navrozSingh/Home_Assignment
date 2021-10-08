@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Fonts used in the application
 extension UIFont {
     
     static var boldForTitle: UIFont {

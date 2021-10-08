@@ -30,7 +30,10 @@ protocol GuidomiaPresenterRequirements: AnyObject {
     func carsForPicker() -> [CarDetails]
     
     /**
-     -  `applyFilter(for: Filter)` used to apply filter.
+     - `applyFilter(for: Filter)` used to apply filter.
+     -  As per the requirement user can select make **or** a model
+     -  Incase user selected a make filter then tries to appy model filter
+     -  The function will remove last applied filter
      - Parameters: `Filter` object to be passed by caller, by which filteration will take place.
      */
     func applyFilter(for: Filter)

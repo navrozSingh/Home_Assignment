@@ -12,12 +12,13 @@ final class CarCell: UITableViewCell {
     
     // MARK: - Private class variables
     private struct Constant {
-        static let padding: CGFloat = 16
-        static let labelHeight: CGFloat = 32
-        static let imageHeight: CGFloat = 80
-        static let imageWidth: CGFloat = 120
-        static let carDetailStackHeight: CGFloat = 150
-        static let defaultHeightProsConsHeight: CGFloat = 0
+        static let padding: CGFloat = 16.0
+        static let labelHeight: CGFloat = 32.0
+        static let imageHeight: CGFloat = 80.0
+        static let imageWidth: CGFloat = 120.0
+        static let stackSpacing: CGFloat = -25.0
+        static let carDetailStackHeight: CGFloat = 150.0
+        static let carNameTop: CGFloat = 20
     }
         
     private lazy var carDetailsView: UIView = {
@@ -36,7 +37,7 @@ final class CarCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill
-        stackView.contentMode = .scaleAspectFit
+        stackView.spacing = Constant.stackSpacing
         stackView.addArrangedSubview(carDetailsView)
         stackView.addArrangedSubview(prosConsTextView)
         return stackView
@@ -84,7 +85,7 @@ final class CarCell: UITableViewCell {
     
     private let carImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
         return imageView
@@ -105,19 +106,21 @@ final class CarCell: UITableViewCell {
         setupCarDetailStack()
     }
 
-    func configureCell(with modal: CarDetails?, showProsCons: Bool = false) {
+    func configureCell(with model: CarDetails?, showProsCons: Bool = false) {
         self.contentView.backgroundColor = UIColor.lightGray
-        carName.text = CarCellFormatter.carName(from: modal)
-        carPrice.text = CarCellFormatter.getCarPrice(price: modal?.customerPrice)
-        carImage.image = CarCellFormatter.imageMapper(modal: modal?.model)
-        starLabel.attributedText = CarCellFormatter.star(rating: modal?.rating)
-
+        carName.text = CarCellFormatter.carName(from: model)
+        carPrice.text = CarCellFormatter.getCarPrice(price: model?.customerPrice)
+        carImage.image = CarCellFormatter.imageMapper(modal: model?.model)
+        starLabel.attributedText = CarCellFormatter.star(rating: model?.rating)
         if showProsCons {
-            let points = CarCellFormatter.prosCons(pros: modal?.prosList, cons: modal?.consList)
+            mainStackView.spacing = CarCellFormatter.cellStackPadding(model: model)
+            let points = CarCellFormatter.prosCons(pros: model?.prosList,
+                                                   cons: model?.consList)
             prosConsTextView.isHidden = false
             prosConsTextView.attributedText = points
         } else {
             prosConsTextView.isHidden = true
+
         }
     }
 }
@@ -129,7 +132,7 @@ private extension CarCell {
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             mainStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
-                                               constant: Constant.padding),
+                                               constant: Constant.padding + 4),
             mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
                                                 constant: -Constant.padding),
             mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -(Constant.padding*2))
@@ -143,7 +146,7 @@ private extension CarCell {
             carImage.widthAnchor.constraint(equalToConstant: Constant.imageWidth),
             carImage.heightAnchor.constraint(equalToConstant: Constant.imageHeight),
             
-            carName.topAnchor.constraint(equalTo: carDetailsView.topAnchor, constant: 10),
+            carName.topAnchor.constraint(equalTo: carDetailsView.topAnchor, constant: Constant.carNameTop),
             carName.leadingAnchor.constraint(equalTo: carImage.trailingAnchor,
                                              constant: Constant.padding),
             carName.trailingAnchor.constraint(equalTo: carDetailsView.trailingAnchor),

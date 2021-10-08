@@ -25,10 +25,13 @@ class CarCellFormatter {
         static let consText = " Cons : \n"
         static let carPrice = "Price : "
         static let lastFiveChar = "000.0"
-        static let thousand = "K"
-        static let starSpacing = 6
+        static let thousand = "k"
+        static let starSpacing = 6.0
         static let starFilled = "★"
         static let starEmpty = "☆"
+        static let normalStackPadding: CGFloat = -18.0
+        static let extraStackPadding: CGFloat = -34.0
+        static let consTopSpacing: CGFloat = 5.0
     }
     
     /**
@@ -70,12 +73,12 @@ class CarCellFormatter {
         if let pros = pros?.compactMap({ $0.count > 0 ? $0 : nil }),
            !pros.isEmpty {
             result.append(prosConsString(for: Constant.proText))
-            result.append(NSAttributedString.addBullets(List: pros, font: UIFont.semiBold))
+            result.append(NSAttributedString.addBullets(List: pros, font: UIFont.smallBold))
         }
         if  let cons = cons?.compactMap({$0.count > 0 ? $0 : nil}),
             !cons.isEmpty {
             result.append(prosConsString(for: Constant.consText))
-            result.append(NSAttributedString.addBullets(List: cons, font: UIFont.semiBold))
+            result.append(NSAttributedString.addBullets(List: cons, font: UIFont.smallBold))
         }
         return result
     }
@@ -86,8 +89,10 @@ class CarCellFormatter {
      - Parameter prosConsString: String:
      - Returns: An `NSAttributedString` with same styling as bullets
      */
-     class func prosConsString(for prosConsString: String)-> NSAttributedString {        
-        let textAttributes = NSAttributedString.paragraphStyle(textFont: UIFont.bold, textColor: UIColor.darkGray)
+     class func prosConsString(for prosConsString: String)-> NSAttributedString {
+
+        let textAttributes = NSAttributedString.paragraphStyle(textFont: UIFont.bold,
+                                                               beforeSpacing: prosConsString == Constant.consText ? Constant.consTopSpacing : nil, textColor: UIColor.darkGray)
         return NSAttributedString(string: prosConsString, attributes: textAttributes.0)
     }
     
@@ -150,5 +155,10 @@ class CarCellFormatter {
             starString.append(item <= rating ? Constant.starFilled : Constant.starEmpty)
         }
         return NSAttributedString(string: starString, attributes: [.kern: Constant.starSpacing])
+    }
+    
+    class func cellStackPadding(model: CarDetails?) -> CGFloat {
+
+        CarCellFormatter.carName(from: model).count > 15 ? Constant.extraStackPadding : Constant.normalStackPadding
     }
 }

@@ -7,14 +7,14 @@
 
 import UIKit
 
-final class GuidomiaViewController: BaseViewControllerForNavigation {
+final class GuidomiaViewController: BaseViewController {
     
     // MARK: - Private class variables
     private struct Constant {
         static let headerFrame = CGRect(x: 0,
                                  y: 0,
                                  width: NumbericConstant.screenWidth,
-                                 height: NumbericConstant.screenHeight / 2)
+                                 height: 450)
         static let anyMakePlaceholder = "Any make"
         static let anyModelPlaceholder = "Any model"
         static let title = "GUIDOMIA"
@@ -105,6 +105,7 @@ private extension GuidomiaViewController {
 
 // MARK: - Abstract display
 extension GuidomiaViewController: GuidomiaDisplay {
+    
     func loadCell(with modals: [CarDetails]) {
         carDetails = modals
     }
@@ -184,6 +185,7 @@ extension GuidomiaViewController: UITextFieldDelegate {
 
 // MARK: - Toolbar Delegate to handle done or cancel
 extension GuidomiaViewController: ToolbarPickerViewDelegate {
+    
     func didTapDone() {
         defer {
             view.endEditing(true)

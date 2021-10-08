@@ -26,7 +26,7 @@ class CarCellFormatterTests: XCTestCase {
     func testCarPrice() {
         XCTAssertEqual(CarCellFormatter.getCarPrice(price: nil), "NA")
         XCTAssertEqual(CarCellFormatter.getCarPrice(price: 10.0), "Price : 10.0")
-        XCTAssertEqual(CarCellFormatter.getCarPrice(price: 10000.0), "Price : 10K")
+        XCTAssertEqual(CarCellFormatter.getCarPrice(price: 10000.0), "Price : 10k")
         XCTAssertEqual(CarCellFormatter.prosCons(pros: nil, cons: nil), NSAttributedString(string:""))
     }
 

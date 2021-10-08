@@ -12,10 +12,10 @@ class CarCellHeader: UIView {
     
     // MARK: - Private class variables
     private enum Constant {
-        static let containerHeight: CGFloat = NumbericConstant.screenHeight / 2
         static let textFieldViewHeight: CGFloat = 150.0
         static let labelHeight: CGFloat = 32.0
-        static let paddingForFilter: CGFloat = 16.0
+        static let paddingForFilter: CGFloat = 18.0
+        static let filterContainerPadding: CGFloat = 16.0
         static let cornerRadius: CGFloat = 8.0
         static let carImageBottomPadding: CGFloat = -16.0
         static let tacmoSubLabelBottom: CGFloat = -36.0
@@ -23,7 +23,7 @@ class CarCellHeader: UIView {
         static let tacmoSubLabelText = "Get your's now"
         static let filerPlaceholder = "Filters"
         static let restFilter = "Rest Filters"
-        static let headerCarImage = UIImage(named: "Tacoma")!
+        static let headerCarImage = UIImage(named: "Tacoma")
     }
     
     private lazy var containerView: UIView = {
@@ -71,7 +71,7 @@ class CarCellHeader: UIView {
 
     private let headerCarImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = Constant.headerCarImage
+        imageView.image = Constant.headerCarImage ?? UIImage()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -84,7 +84,7 @@ class CarCellHeader: UIView {
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
-        stackView.spacing = 10
+        stackView.spacing = 16
         stackView.addArrangedSubview(filterLabel)
         stackView.addArrangedSubview(resetFilter)
         return stackView
@@ -141,11 +141,11 @@ private extension CarCellHeader {
             containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             containerViewForFilter.leadingAnchor.constraint(equalTo: containerView.leadingAnchor,
-                                                            constant: Constant.paddingForFilter),
+                                                            constant: (Constant.filterContainerPadding)),
             containerViewForFilter.trailingAnchor.constraint(equalTo: containerView.trailingAnchor,
-                                                             constant: -Constant.paddingForFilter),
+                                                             constant: -Constant.filterContainerPadding),
             containerViewForFilter.bottomAnchor.constraint(equalTo: containerView.bottomAnchor,
-                                                           constant: -Constant.paddingForFilter),
+                                                           constant: -Constant.filterContainerPadding * 2),
             containerViewForFilter.heightAnchor.constraint(equalToConstant: Constant.textFieldViewHeight ),
             
             filterStack.leadingAnchor.constraint(equalTo: containerViewForFilter.leadingAnchor,
@@ -161,9 +161,8 @@ private extension CarCellHeader {
             headerCarImage.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             headerCarImage.bottomAnchor.constraint(equalTo: containerViewForFilter.topAnchor, constant: Constant.carImageBottomPadding),
             
-            tacmoSubLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constant.paddingForFilter + 5 ),
+            tacmoSubLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constant.paddingForFilter + 2),
             tacmoSubLabel.bottomAnchor.constraint(equalTo: containerViewForFilter.topAnchor, constant: Constant.tacmoSubLabelBottom),
-            
             tacmoLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constant.paddingForFilter),
             tacmoLabel.bottomAnchor.constraint(equalTo: tacmoSubLabel.topAnchor)
         ])

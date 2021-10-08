@@ -1,5 +1,5 @@
 //
-//  BaseViewControllerForNavigation.swift
+//  BaseViewController.swift
 //  Home_Assignment
 //
 //  Created by Navroz on 08/10/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
- class BaseViewControllerForNavigation: UIViewController {
+ class BaseViewController: UIViewController {
 
     func navigationBarCustomization(title: String) {
         navigationController?.addCustomColorToNavigationBar(color: .orange)
