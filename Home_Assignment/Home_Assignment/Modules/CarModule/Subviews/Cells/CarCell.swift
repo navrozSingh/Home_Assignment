@@ -19,6 +19,7 @@ final class CarCell: UITableViewCell {
         static let stackSpacing: CGFloat = -25.0
         static let carDetailStackHeight: CGFloat = 150.0
         static let carNameTop: CGFloat = 20
+        static let animationDuration: Double = 4
     }
         
     private lazy var carDetailsView: UIView = {
@@ -105,7 +106,7 @@ final class CarCell: UITableViewCell {
         setupCarDetailsView()
         setupCarDetailStack()
     }
-
+    
     func configureCell(with model: CarDetails?, showProsCons: Bool = false) {
         self.contentView.backgroundColor = UIColor.lightGray
         carName.text = CarCellFormatter.carName(from: model)
@@ -113,14 +114,19 @@ final class CarCell: UITableViewCell {
         carImage.image = CarCellFormatter.imageMapper(modal: model?.model)
         starLabel.attributedText = CarCellFormatter.star(rating: model?.rating)
         if showProsCons {
-            mainStackView.spacing = CarCellFormatter.cellStackPadding(model: model)
-            let points = CarCellFormatter.prosCons(pros: model?.prosList,
-                                                   cons: model?.consList)
-            prosConsTextView.isHidden = false
-            prosConsTextView.attributedText = points
+            showProsConsSection(model)
         } else {
             prosConsTextView.isHidden = true
-
+        }
+    }
+    
+    private func showProsConsSection(_ model: CarDetails?) {
+        mainStackView.spacing = CarCellFormatter.cellStackPadding(model: model)
+        let points = CarCellFormatter.prosCons(pros: model?.prosList,
+                                               cons: model?.consList)
+        prosConsTextView.isHidden = false
+        UIView.animate(withDuration: Constant.animationDuration) { [weak self] in
+            self?.prosConsTextView.attributedText = points
         }
     }
 }
