@@ -11,7 +11,7 @@ import UIKit
 extension NSAttributedString {
     
     /**
-     - func addBullets is used to add bullets points
+     - func `addBullets` is used to add bullets points
      - Parameter font - used to specify the font of the NSAttributedString
      - Parameter indentation - used to specify the indentation between text & bullet point
      - Parameter lineSpacing - used to specify the lineSpacing

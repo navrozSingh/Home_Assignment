@@ -17,6 +17,7 @@
 		034AC2692710001300C479A6 /* MockGuidomiaDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034AC2682710001300C479A6 /* MockGuidomiaDisplay.swift */; };
 		034AC2702710007100C479A6 /* GuidomiaFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034AC26F2710007100C479A6 /* GuidomiaFormatterTests.swift */; };
 		034AC2782710020400C479A6 /* CarCellFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034AC2772710020400C479A6 /* CarCellFormatterTests.swift */; };
+		034AC27F27100ED600C479A6 /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034AC27E27100ED600C479A6 /* ExtensionTests.swift */; };
 		034E0DB5270D6DDF00A9687F /* CarCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DB4270D6DDF00A9687F /* CarCellHeader.swift */; };
 		034E0DBD270D8E5000A9687F /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */; };
 		034E0DC3270DD02400A9687F /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034E0DC2270DD02400A9687F /* UIFont+Extensions.swift */; };
@@ -27,7 +28,6 @@
 		03752B8D270CA6000056FA6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752B8C270CA6000056FA6D /* AppDelegate.swift */; };
 		03752B8F270CA6000056FA6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752B8E270CA6000056FA6D /* SceneDelegate.swift */; };
 		03752B99270CA60A0056FA6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03752B97270CA60A0056FA6D /* LaunchScreen.storyboard */; };
-		03752BA4270CA60A0056FA6D /* Home_AssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BA3270CA60A0056FA6D /* Home_AssignmentTests.swift */; };
 		03752BF1270CE4DC0056FA6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03752BD9270CE4DC0056FA6D /* Assets.xcassets */; };
 		03752BF2270CE4DC0056FA6D /* car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 03752BDB270CE4DC0056FA6D /* car_list.json */; };
 		03752BF3270CE4DC0056FA6D /* GuidomiaFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03752BDF270CE4DC0056FA6D /* GuidomiaFormatter.swift */; };
@@ -62,6 +62,7 @@
 		034AC2682710001300C479A6 /* MockGuidomiaDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGuidomiaDisplay.swift; sourceTree = "<group>"; };
 		034AC26F2710007100C479A6 /* GuidomiaFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidomiaFormatterTests.swift; sourceTree = "<group>"; };
 		034AC2772710020400C479A6 /* CarCellFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCellFormatterTests.swift; sourceTree = "<group>"; };
+		034AC27E27100ED600C479A6 /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTests.swift; sourceTree = "<group>"; };
 		034E0DB4270D6DDF00A9687F /* CarCellHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarCellHeader.swift; sourceTree = "<group>"; };
 		034E0DBC270D8E5000A9687F /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		034E0DC2270DD02400A9687F /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
@@ -75,7 +76,6 @@
 		03752B98270CA60A0056FA6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03752B9A270CA60A0056FA6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03752B9F270CA60A0056FA6D /* Home_AssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Home_AssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		03752BA3270CA60A0056FA6D /* Home_AssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_AssignmentTests.swift; sourceTree = "<group>"; };
 		03752BA5270CA60A0056FA6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03752BD9270CE4DC0056FA6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03752BDB270CE4DC0056FA6D /* car_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = car_list.json; sourceTree = "<group>"; };
@@ -150,6 +150,14 @@
 			path = Formatters;
 			sourceTree = "<group>";
 		};
+		034AC27D27100EC500C479A6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				034AC27E27100ED600C479A6 /* ExtensionTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		034E0DB3270D6DDF00A9687F /* Headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,10 +202,10 @@
 		03752BA2270CA60A0056FA6D /* Home_AssignmentTests */ = {
 			isa = PBXGroup;
 			children = (
+				034AC27D27100EC500C479A6 /* Extensions */,
 				034AC26E2710003700C479A6 /* Formatters */,
 				034AC267270FFFD700C479A6 /* Display */,
 				034AC266270FFFC700C479A6 /* Presenter */,
-				03752BA3270CA60A0056FA6D /* Home_AssignmentTests.swift */,
 				03752BA5270CA60A0056FA6D /* Info.plist */,
 			);
 			path = Home_AssignmentTests;
@@ -443,7 +451,7 @@
 			files = (
 				034AC2692710001300C479A6 /* MockGuidomiaDisplay.swift in Sources */,
 				034AC2702710007100C479A6 /* GuidomiaFormatterTests.swift in Sources */,
-				03752BA4270CA60A0056FA6D /* Home_AssignmentTests.swift in Sources */,
+				034AC27F27100ED600C479A6 /* ExtensionTests.swift in Sources */,
 				034AC260270FFAE300C479A6 /* GuidomiaPresenterTests.swift in Sources */,
 				034AC2782710020400C479A6 /* CarCellFormatterTests.swift in Sources */,
 			);
