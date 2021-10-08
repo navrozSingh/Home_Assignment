@@ -9,12 +9,12 @@ import UIKit
 
 final class GuidomiaViewController: BaseViewControllerForNavigation {
     
-    // MARK: Private class variables
+    // MARK: - Private class variables
     private struct Constant {
         static let headerFrame = CGRect(x: 0,
                                  y: 0,
-                                 width: UIScreen.main.bounds.width,
-                                 height: UIScreen.main.bounds.height / 2)
+                                 width: NumbericConstant.screenWidth,
+                                 height: NumbericConstant.screenHeight / 2)
         static let anyMakePlaceholder = "Any make"
         static let anyModelPlaceholder = "Any model"
         static let title = "GUIDOMIA"
@@ -75,7 +75,7 @@ final class GuidomiaViewController: BaseViewControllerForNavigation {
         return header
     }()
 
-    // MARK: View Controller life cycle
+    // MARK: - View Controller life cycle
     override func loadView() {
         self.view = tableView
     }
@@ -93,7 +93,7 @@ final class GuidomiaViewController: BaseViewControllerForNavigation {
     }
 }
 
-// MARK: An extension to setup views
+// MARK: - An extension to setup views
 private extension GuidomiaViewController {
         
     func setupTableView() {
@@ -103,7 +103,7 @@ private extension GuidomiaViewController {
     }
 }
 
-// MARK: Abstract display
+// MARK: - Abstract display
 extension GuidomiaViewController: GuidomiaDisplay {
     func loadCell(with modals: [CarDetails]) {
         carDetails = modals
@@ -118,7 +118,7 @@ extension GuidomiaViewController: GuidomiaDisplay {
     }
 }
 
-// MARK: TableView DataSource
+// MARK: - TableView DataSource
 extension GuidomiaViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -135,7 +135,7 @@ extension GuidomiaViewController: UITableViewDataSource {
     }
 }
 
-// MARK: TableView Delegate
+// MARK: - TableView Delegate
 extension GuidomiaViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -143,7 +143,7 @@ extension GuidomiaViewController: UITableViewDelegate {
     }
 }
 
-// MARK: UIPicker DataSource
+// MARK: - UIPicker DataSource
 extension GuidomiaViewController: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -159,7 +159,7 @@ extension GuidomiaViewController: UIPickerViewDataSource {
     }
 }
 
-// MARK: UIPicker Delegate
+// MARK: - UIPicker Delegate
 extension GuidomiaViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -171,7 +171,7 @@ extension GuidomiaViewController: UIPickerViewDelegate {
     }
 }
 
-// MARK: TextField Delegate
+// MARK: - TextField Delegate
 extension GuidomiaViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -182,7 +182,7 @@ extension GuidomiaViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: Toolbar Delegate to handle done or cancel
+// MARK: - Toolbar Delegate to handle done or cancel
 extension GuidomiaViewController: ToolbarPickerViewDelegate {
     func didTapDone() {
         defer {

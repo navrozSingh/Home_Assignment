@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Custom colors used in the project
 extension UIColor {
     
     static let orange = UIColor.hexToUIColor("#FC6016")
@@ -17,14 +18,17 @@ extension UIColor {
 }
 
 fileprivate extension UIColor {
-    
+    /**
+     - `func hexToUIColor` convert a hex vaule into UIColor
+     - base condition if proper hex is not passed "lightGray" will be returned
+     */
     static func hexToUIColor(_ hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         if (cString.hasPrefix("#")) {
             cString.remove(at: cString.startIndex)
         }
         if ((cString.count) != 6) {
-            return UIColor.gray
+            return UIColor.lightGray
         }
         var rgbValue:UInt64 = 0
         Scanner(string: cString).scanHexInt64(&rgbValue)

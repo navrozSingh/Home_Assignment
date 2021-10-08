@@ -10,15 +10,15 @@ import Foundation
 
 class CarCellHeader: UIView {
     
-    // MARK: Private class variables
+    // MARK: - Private class variables
     private enum Constant {
-        static let containerHeight: CGFloat = UIScreen.main.bounds.height / 2
+        static let containerHeight: CGFloat = NumbericConstant.screenHeight / 2
         static let textFieldViewHeight: CGFloat = 150.0
         static let labelHeight: CGFloat = 32.0
         static let paddingForFilter: CGFloat = 16.0
         static let cornerRadius: CGFloat = 8.0
         static let carImageBottomPadding: CGFloat = -15.0
-        static let tacmoSubLabelBottom: CGFloat = -40
+        static let tacmoSubLabelBottom: CGFloat = -36.0
         static let tacmoLabelText = "Tacoma 2021"
         static let tacmoSubLabelText = "Get your's now"
         static let filerPlaceholder = "Filters"
@@ -72,6 +72,8 @@ class CarCellHeader: UIView {
     private let headerCarImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = Constant.headerCarImage
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -88,7 +90,7 @@ class CarCellHeader: UIView {
         return stackView
     }()
     
-    // MARK: View Initialization
+    // MARK: - View Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -122,7 +124,7 @@ class CarCellHeader: UIView {
     }
 }
 
-// MARK: An extension to setup views
+// MARK: - An extension to setup views
 private extension CarCellHeader {
     func setupUI() {
         self.addSubview(containerView)

@@ -10,10 +10,21 @@ import UIKit
 
 extension UINavigationController {
     
+    /**
+     - `addCustomColorToNavigationBar` used to add custom color to navigation controller
+     - Parameter color - to specify desized color
+     */
     func addCustomColorToNavigationBar(color: UIColor) {
         self.navigationBar.barTintColor = color
     }
     
+    /**
+     - `leftAlignedTitle` used to left align the tite of navigation bar
+     - Parameter title - to specify the title
+     - Parameter frontPadding - to specify the left padding
+     - Parameter font - to specify the font of the title
+     - Parameter textColor - to specify the textColor of the title label
+     */
     func leftAlignedTitle(title: String,
                           frontPadding: CGFloat = 8,
                           font: UIFont = UIFont.bold,

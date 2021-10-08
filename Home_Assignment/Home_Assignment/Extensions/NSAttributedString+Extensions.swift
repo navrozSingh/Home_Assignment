@@ -8,33 +8,24 @@
 import Foundation
 import UIKit
 
-extension String {
+extension NSAttributedString {
     
-    static func addBullet(List strings: [String],
+    /**
+     - func addBullets is used to add bullets points
+     - Parameter font - used to specify the font of the NSAttributedString
+     - Parameter indentation - used to specify the indentation between text & bullet point
+     - Parameter lineSpacing - used to specify the lineSpacing
+     - Parameter paragraphSpacing - used to specify the paragraphSpacing
+     - Parameter textColor - used to specify the textColor
+     - Parameter bulletColor - used to specify the bulletColor
+     */
+    static func addBullets(List strings: [String],
                    font: UIFont,
-                   indentation: CGFloat = 15,
-                   lineSpacing: CGFloat = 2,
-                   paragraphSpacing: CGFloat = 5,
+                   indentation: CGFloat = 15.0,
+                   lineSpacing: CGFloat = 2.0,
+                   paragraphSpacing: CGFloat = 5.0,
                    textColor: UIColor = .bulletPointColor,
                    bulletColor: UIColor = .orange) -> NSAttributedString {
-        
-        func createParagraphAttirbute() -> NSParagraphStyle {
-            
-            guard let paragraphStyle: NSMutableParagraphStyle = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle,
-                let nonOptions = NSDictionary() as? [NSTextTab.OptionKey: Any]
-            else {
-                return NSParagraphStyle()
-            }
-            
-            paragraphStyle.tabStops = [ NSTextTab(textAlignment: .left,
-                                                  location: indentation, options: nonOptions)]
-            paragraphStyle.defaultTabInterval = indentation
-            paragraphStyle.firstLineHeadIndent = 0
-            paragraphStyle.lineSpacing = lineSpacing
-            paragraphStyle.paragraphSpacing = paragraphSpacing
-            paragraphStyle.headIndent = indentation
-            return paragraphStyle
-        }
         
         let bulletPoint = "  \u{2022}"
         let textAttributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: textColor]
@@ -64,10 +55,10 @@ extension String {
     }
     
     static func paragraphStyle(textFont: UIFont,
-                             indentation: CGFloat = 15,
-                             lineSpacing: CGFloat = 2,
-                             paragraphSpacing: CGFloat = 5,
-                             textColor: UIColor = .black) -> ([NSAttributedString.Key: Any], NSParagraphStyle) {
+                               indentation: CGFloat = 15.0,
+                               lineSpacing: CGFloat = 2.0,
+                               paragraphSpacing: CGFloat = 5.0,
+                             textColor: UIColor = .textColor) -> ([NSAttributedString.Key: Any], NSParagraphStyle) {
         guard let paragraphStyle: NSMutableParagraphStyle = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle,
               let nonOptions = NSDictionary() as? [NSTextTab.OptionKey: Any]
         else {

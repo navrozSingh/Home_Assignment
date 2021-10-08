@@ -10,7 +10,7 @@ import Foundation
     
 final class CarCell: UITableViewCell {
     
-    // MARK: Private class variables
+    // MARK: - Private class variables
     private struct Constant {
         static let padding: CGFloat = 16
         static let labelHeight: CGFloat = 32
@@ -91,7 +91,6 @@ final class CarCell: UITableViewCell {
     }()
     
     // MARK: - Initialization
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         setupSeparatorView()
@@ -113,8 +112,8 @@ final class CarCell: UITableViewCell {
         carImage.image = CarCellFormatter.imageMapper(modal: modal?.model)
         starLabel.attributedText = CarCellFormatter.star(rating: modal?.rating)
 
-        if showProsCons,
-           let points = CarCellFormatter.prosCons(pros: modal?.prosList, cons: modal?.consList) {
+        if showProsCons {
+            let points = CarCellFormatter.prosCons(pros: modal?.prosList, cons: modal?.consList)
             prosConsTextView.isHidden = false
             prosConsTextView.attributedText = points
         } else {
@@ -123,6 +122,7 @@ final class CarCell: UITableViewCell {
     }
 }
 
+// MARK: - An extension to setup views
 private extension CarCell {
     func setupCarDetailStack() {
         contentView.addSubview(mainStackView)

@@ -6,11 +6,16 @@
 //
 
 import Foundation
+import UIKit
+
+// Global Constants
 
 public struct StringConstants {
     static let carCellID = "CarCell"
 }
 
 public struct NumbericConstant {
-    
+    static let screenHeight = UIScreen.main.bounds.height
+    static let screenWidth = UIScreen.main.bounds.width
+
 }

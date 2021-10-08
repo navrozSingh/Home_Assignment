@@ -8,7 +8,13 @@
 import UIKit
 
 extension UITextField {
-    
+    /**
+     - func createTextField is used to create an textfield
+     - Parameter backgroundColor - used to specify the backgroundColor of text field
+     - Parameter placeholder - used to specify the placeholder text of the text field
+     - Parameter leftSpace - used to specify the left padding text of the text field
+     - Parameter cornerRadius - used to specify the cornerRadius of the text field
+     */
     static func createTextField(backgroundColor: UIColor = .white,
                                 placeholder: String,
                                 leftSpace: CGFloat = 16.0,

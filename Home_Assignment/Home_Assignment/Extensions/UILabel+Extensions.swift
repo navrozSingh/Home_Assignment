@@ -8,7 +8,13 @@
 import UIKit
 
 extension UILabel {
-    
+    /**
+     - func createLabel is used to create an UIlabel
+     - Parameter numberOfLines - used to specify the numberOfLines of the UIlabel
+     - Parameter font - used to specify the font of the text field
+     - Parameter color - used to specify the text color
+     */
+
     class func createLabel(numberOfLines: Int = 1,
                            font: UIFont = UIFont.smallBold,
                            color: UIColor = UIColor.textColor) -> UILabel {

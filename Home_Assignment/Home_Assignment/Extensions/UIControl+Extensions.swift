@@ -8,7 +8,9 @@
 import UIKit
 
 extension UIControl {
-   
+   /**
+     - func used to add closure for UIControl event
+     */
     func addAction(for controlEvents: UIControl.Event = .touchUpInside, _ closure: @escaping()->()) {
         class ClosureSleeve: NSObject {
             let closure:()->()
